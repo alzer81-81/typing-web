@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
     homeschool: "🏡",
     students: "🎓"
   };
+  var roleDescriptions = {
+    admin: "District-wide setup and reporting.",
+    teacher: "Class assignments and progress tracking.",
+    homeschool: "At-home learning plans and routines.",
+    students: "Practice lessons, games, and goals."
+  };
 
   if (personaRouteMatch) {
     document.body.classList.add("persona-" + personaRouteMatch[1]);
@@ -75,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.querySelectorAll(".dropdown-menu a[href]").forEach(function (link) {
-    if (link.getAttribute("data-emoji-applied") === "true") return;
+    if (link.getAttribute("data-role-enhanced") === "true") return;
     var href = link.getAttribute("href") || "";
     var localPathname = new URL(href, document.baseURI).pathname;
     localPathname = localPathname.indexOf(basePathname) === 0 ? localPathname.slice(basePathname.length) : localPathname;
@@ -85,8 +91,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var key = match[1];
     if (!roleEmoji[key]) return;
-    link.textContent = roleEmoji[key] + " " + link.textContent.trim();
-    link.setAttribute("data-emoji-applied", "true");
+    var roleName = link.textContent.trim();
+    var description = roleDescriptions[key] || "";
+    link.classList.add("role-item-link");
+    link.innerHTML =
+      "<span class=\"role-item-title\">" + roleEmoji[key] + " " + roleName + "</span>" +
+      "<span class=\"role-item-subtext\">" + description + "</span>";
+    link.setAttribute("data-role-enhanced", "true");
   });
 
   var bestMatch = null;
