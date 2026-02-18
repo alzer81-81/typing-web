@@ -25,6 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
     homeschool: "At-home learning plans and routines.",
     students: "Practice lessons, games, and goals."
   };
+  var rolePaths = {
+    admin: "admin/",
+    teacher: "teacher/",
+    homeschool: "homeschool/",
+    students: "students/"
+  };
+  var storedRole = null;
+  try {
+    storedRole = window.localStorage.getItem("selectedRole");
+  } catch (err) {}
+  var urlRole = new URL(window.location.href).searchParams.get("role");
+  var normalizedUrlRole = urlRole && roleLabels[urlRole] ? urlRole : null;
+  var contextRole = personaRouteMatch ? personaRouteMatch[1] : (normalizedUrlRole || (storedRole && roleLabels[storedRole] ? storedRole : null));
+
+  if (contextRole) {
+    try {
+      window.localStorage.setItem("selectedRole", contextRole);
+    } catch (err) {}
+  }
 
   if (personaRouteMatch) {
     document.body.classList.add("persona-" + personaRouteMatch[1]);
@@ -63,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var dropdownToggle = document.querySelector(".dropdown .dropdown-toggle");
   if (dropdownToggle) {
-    var roleKey = personaRouteMatch ? personaRouteMatch[1] : null;
+    var roleKey = contextRole;
     if (!roleKey) {
       var roleLink = document.querySelector(".dropdown-menu a[aria-current=\"page\"]");
       if (roleLink) {
@@ -77,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (roleKey && roleLabels[roleKey]) {
       dropdownToggle.textContent = roleLabels[roleKey];
+      dropdownToggle.setAttribute("href", rolePaths[roleKey]);
     }
   }
 
@@ -98,6 +118,16 @@ document.addEventListener("DOMContentLoaded", function () {
       "<span class=\"role-item-title\">" + roleEmoji[key] + " " + roleName + "</span>" +
       "<span class=\"role-item-subtext\">" + description + "</span>";
     link.setAttribute("data-role-enhanced", "true");
+
+    if (contextRole && key === contextRole) {
+      link.classList.add("role-item-active");
+    }
+
+    link.addEventListener("click", function () {
+      try {
+        window.localStorage.setItem("selectedRole", key);
+      } catch (err) {}
+    });
   });
 
   var bestMatch = null;

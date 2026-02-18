@@ -183,6 +183,11 @@ h2 {
   background: #f3f4f6;
 }
 
+.dropdown-menu a.role-item-active {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
 .dropdown-menu a:last-child {
   border-top: 1px solid #e5e7eb;
   margin-top: 6px;
