@@ -189,8 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(modal);
   }
 
-  var educatorBtn = modal.querySelector("[data-role=\"educator\"]");
-  var studentBtn = modal.querySelector("[data-role=\"student\"]");
   var titleEl = modal.querySelector(".modal-title");
   var descriptionEl = modal.querySelector(".modal-description");
   var actionsEl = modal.querySelector(".modal-actions");
@@ -210,32 +208,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  function setAudienceMode(audience) {
-    var mode = audience || "both";
-    if (mode !== "educator" && mode !== "student" && mode !== "both") mode = "both";
-
-    if (actionsEl) actionsEl.classList.remove("single-option");
-
-    if (educatorBtn) educatorBtn.style.display = (mode === "student") ? "none" : "";
-    if (studentBtn) studentBtn.style.display = (mode === "educator") ? "none" : "";
-
-    if (actionsEl && mode !== "both") actionsEl.classList.add("single-option");
-  }
-
   function resolveAudience() {
     if (contextRole === "students") return "student";
     if (contextRole === "admin" || contextRole === "teacher" || contextRole === "homeschool") return "educator";
     return "both";
   }
 
+  function renderAuthActions(mode) {
+    if (!actionsEl) return;
+    var cfg = mode === "signup" ? targets.signup : targets.login;
+    var audience = resolveAudience();
+    var isHomepage = document.body.classList.contains("homepage");
+
+    actionsEl.classList.remove("single-option");
+    actionsEl.classList.remove("modal-actions-role-grid");
+
+    if (isHomepage) {
+      actionsEl.classList.add("modal-actions-role-grid");
+      actionsEl.innerHTML =
+        "<a href=\"" + cfg.educator + "?role=admin\" class=\"btn\">Admin</a>" +
+        "<a href=\"" + cfg.educator + "?role=teacher\" class=\"btn\">Teacher</a>" +
+        "<a href=\"" + cfg.educator + "?role=homeschool\" class=\"btn\">Homeschooler</a>" +
+        "<a href=\"" + cfg.student + "?role=students\" class=\"btn btn-secondary\">Student</a>";
+      return;
+    }
+
+    if (audience === "educator") {
+      actionsEl.classList.add("single-option");
+      actionsEl.innerHTML = "<a href=\"" + cfg.educator + "\" class=\"btn\">Educator</a>";
+      return;
+    }
+
+    if (audience === "student") {
+      actionsEl.classList.add("single-option");
+      actionsEl.innerHTML = "<a href=\"" + cfg.student + "\" class=\"btn btn-secondary\">Individual</a>";
+      return;
+    }
+
+    actionsEl.innerHTML =
+      "<a href=\"" + cfg.educator + "\" class=\"btn\">Educator</a>" +
+      "<a href=\"" + cfg.student + "\" class=\"btn btn-secondary\">Individual</a>";
+  }
+
   function openModal(mode) {
     var cfg = mode === "signup" ? targets.signup : targets.login;
-
-    if (educatorBtn) educatorBtn.setAttribute("href", cfg.educator);
-    if (studentBtn) studentBtn.setAttribute("href", cfg.student);
     if (titleEl) titleEl.textContent = cfg.title;
-    if (descriptionEl) descriptionEl.textContent = cfg.description;
-    setAudienceMode(resolveAudience());
+    if (descriptionEl) {
+      descriptionEl.textContent = document.body.classList.contains("homepage")
+        ? "Are you an admin, teacher, homeschooler, or student?"
+        : cfg.description;
+    }
+    renderAuthActions(mode);
 
     modal.classList.add("is-visible");
     modal.setAttribute("aria-hidden", "false");
@@ -267,9 +290,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var authRouteMatch = pathname.match(/^\/(login|signup)(?:\/(educator|student))?\/?$/);
   if (authRouteMatch) {
-    if (authRouteMatch[2]) {
-      setAudienceMode(authRouteMatch[2]);
-    }
     openModal(authRouteMatch[1]);
   }
 });
