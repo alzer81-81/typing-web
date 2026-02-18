@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var pathname = window.location.pathname;
+  var basePathname = new URL(document.baseURI).pathname.replace(/\/$/, "");
+  var rawPathname = window.location.pathname;
+  var pathname = rawPathname.indexOf(basePathname) === 0 ? rawPathname.slice(basePathname.length) : rawPathname;
+  if (!pathname) pathname = "/";
+  if (pathname.charAt(0) !== "/") pathname = "/" + pathname;
   var navLinks = document.querySelectorAll("header .nav-links a[href]");
   var headerNavs = document.querySelectorAll("header .header-inner .nav-links");
   var personaRouteMatch = pathname.match(/^\/(admin|teacher|homeschool|students)(?:\/|$)/);
@@ -58,7 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var roleLink = document.querySelector(".dropdown-menu a[aria-current=\"page\"]");
       if (roleLink) {
         var href = roleLink.getAttribute("href") || "";
-        var roleMatch = href.match(/^\/(admin|teacher|homeschool|students)\/?$/);
+        var rolePathname = new URL(href, document.baseURI).pathname;
+        rolePathname = rolePathname.indexOf(basePathname) === 0 ? rolePathname.slice(basePathname.length) : rolePathname;
+        if (rolePathname.charAt(0) !== "/") rolePathname = "/" + rolePathname;
+        var roleMatch = rolePathname.match(/^\/(admin|teacher|homeschool|students)\/?$/);
         if (roleMatch) roleKey = roleMatch[1];
       }
     }
@@ -70,7 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".dropdown-menu a[href]").forEach(function (link) {
     if (link.getAttribute("data-emoji-applied") === "true") return;
     var href = link.getAttribute("href") || "";
-    var match = href.match(/^\/(admin|teacher|homeschool|students)\/?$/);
+    var localPathname = new URL(href, document.baseURI).pathname;
+    localPathname = localPathname.indexOf(basePathname) === 0 ? localPathname.slice(basePathname.length) : localPathname;
+    if (localPathname.charAt(0) !== "/") localPathname = "/" + localPathname;
+    var match = localPathname.match(/^\/(admin|teacher|homeschool|students)\/?$/);
     if (!match) return;
 
     var key = match[1];
@@ -82,14 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
   var bestMatch = null;
   navLinks.forEach(function (link) {
     var href = link.getAttribute("href");
-    if (!href || href.indexOf("/") !== 0 || href === "/login/" || href === "/signup/") return;
+    if (!href || href.indexOf("http") === 0 || href.indexOf("#") === 0) return;
 
-    var isExactMatch = href === pathname;
-    var isDirectoryMatch = href !== "/" && pathname.indexOf(href) === 0;
+    var linkPathname = new URL(href, document.baseURI).pathname;
+    linkPathname = linkPathname.indexOf(basePathname) === 0 ? linkPathname.slice(basePathname.length) : linkPathname;
+    if (!linkPathname) linkPathname = "/";
+    if (linkPathname.charAt(0) !== "/") linkPathname = "/" + linkPathname;
+    if (linkPathname === "/login/" || linkPathname === "/signup/") return;
+
+    var isExactMatch = linkPathname === pathname;
+    var isDirectoryMatch = linkPathname !== "/" && pathname.indexOf(linkPathname) === 0;
 
     if (isExactMatch || isDirectoryMatch) {
-      if (!bestMatch || href.length > bestMatch.href.length) {
-        bestMatch = { link: link, href: href };
+      if (!bestMatch || linkPathname.length > bestMatch.href.length) {
+        bestMatch = { link: link, href: linkPathname };
       }
     }
   });
@@ -120,14 +136,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var targets = {
     login: {
-      educator: "/login/educator/",
-      student: "/login/student/",
+      educator: "login/educator/",
+      student: "login/student/",
       title: "Log In",
       description: "Choose whether you're logging in as an educator or a student."
     },
     signup: {
-      educator: "/signup/educator/",
-      student: "/signup/student/",
+      educator: "signup/educator/",
+      student: "signup/student/",
       title: "Sign Up",
       description: "Choose whether you're signing up as an educator or a student."
     }
@@ -175,30 +191,30 @@ function hydratePersonaPage(personaKey) {
     admin: {
       label: "admins",
       audience: "district and school teams",
-      ctaHref: "/signup/educator/",
+      ctaHref: "signup/educator/",
       ctaLabel: "Create admin account",
-      heroImage: "/assets/ai-hero-admin.svg"
+      heroImage: "assets/ai-hero-admin.svg"
     },
     teacher: {
       label: "teachers",
       audience: "classroom teachers",
-      ctaHref: "/signup/educator/",
+      ctaHref: "signup/educator/",
       ctaLabel: "Create teacher account",
-      heroImage: "/assets/ai-hero-teacher.svg"
+      heroImage: "assets/ai-hero-teacher.svg"
     },
     homeschool: {
       label: "homeschool families",
       audience: "parents and learning pods",
-      ctaHref: "/signup/educator/",
+      ctaHref: "signup/educator/",
       ctaLabel: "Create homeschool account",
-      heroImage: "/assets/ai-hero-homeschool.svg"
+      heroImage: "assets/ai-hero-homeschool.svg"
     },
     students: {
       label: "students",
       audience: "independent learners",
-      ctaHref: "/signup/student/",
+      ctaHref: "signup/student/",
       ctaLabel: "Create student account",
-      heroImage: "/assets/ai-hero-student.svg"
+      heroImage: "assets/ai-hero-student.svg"
     }
   };
 
