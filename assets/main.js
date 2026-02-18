@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     admin: "Role: Admin",
     teacher: "Role: Teacher",
     homeschool: "Role: Homeschool",
-    students: "Role: Student"
+    students: "Role: Individual"
   };
   var roleEmoji = {
     admin: "🏫",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     admin: "District-wide setup and reporting.",
     teacher: "Class assignments and progress tracking.",
     homeschool: "At-home learning plans and routines.",
-    students: "Practice lessons, games, and goals."
+    students: "Personal practice, games, and goals."
   };
   var rolePaths = {
     admin: "admin/",
@@ -200,13 +200,13 @@ document.addEventListener("DOMContentLoaded", function () {
       educator: "login/educator/",
       student: "login/student/",
       title: "Log In",
-      description: "Choose whether you're logging in as an educator or a student."
+      description: "Choose whether you're logging in as an educator or an individual."
     },
     signup: {
       educator: "signup/educator/",
       student: "signup/student/",
       title: "Sign Up",
-      description: "Choose whether you're signing up as an educator or a student."
+      description: "Choose whether you're signing up as an educator or an individual."
     }
   };
 
@@ -286,10 +286,10 @@ function createAuthModal() {
         "<button class=\"modal-close\" type=\"button\" aria-label=\"Close\">&times;</button>" +
       "</div>" +
       "<div class=\"modal-body\">" +
-        "<p class=\"modal-description\">Choose whether you're logging in as an educator or a student.</p>" +
+        "<p class=\"modal-description\">Choose whether you're logging in as an educator or an individual.</p>" +
         "<div class=\"modal-actions\">" +
           "<a href=\"login/educator/\" class=\"btn\" data-role=\"educator\">Educator</a>" +
-          "<a href=\"login/student/\" class=\"btn btn-secondary\" data-role=\"student\">Student</a>" +
+          "<a href=\"login/student/\" class=\"btn btn-secondary\" data-role=\"student\">Individual</a>" +
         "</div>" +
       "</div>" +
     "</div>";
@@ -320,10 +320,10 @@ function hydratePersonaPage(personaKey) {
       heroImage: "assets/ai-hero-homeschool.svg"
     },
     students: {
-      label: "students",
+      label: "individuals",
       audience: "independent learners",
       ctaHref: "signup/student/",
-      ctaLabel: "Create student account",
+      ctaLabel: "Create individual account",
       heroImage: "assets/ai-hero-student.svg"
     }
   };
