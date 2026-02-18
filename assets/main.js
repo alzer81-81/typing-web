@@ -193,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var studentBtn = modal.querySelector("[data-role=\"student\"]");
   var titleEl = modal.querySelector(".modal-title");
   var descriptionEl = modal.querySelector(".modal-description");
+  var actionsEl = modal.querySelector(".modal-actions");
 
   var targets = {
     login: {
@@ -209,6 +210,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  function setAudienceMode(audience) {
+    var mode = audience || "both";
+    if (mode !== "educator" && mode !== "student" && mode !== "both") mode = "both";
+
+    if (actionsEl) actionsEl.classList.remove("single-option");
+
+    if (educatorBtn) educatorBtn.style.display = (mode === "student") ? "none" : "";
+    if (studentBtn) studentBtn.style.display = (mode === "educator") ? "none" : "";
+
+    if (actionsEl && mode !== "both") actionsEl.classList.add("single-option");
+  }
+
+  function resolveAudience() {
+    if (contextRole === "students") return "student";
+    if (contextRole === "admin" || contextRole === "teacher" || contextRole === "homeschool") return "educator";
+    return "both";
+  }
+
   function openModal(mode) {
     var cfg = mode === "signup" ? targets.signup : targets.login;
 
@@ -216,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (studentBtn) studentBtn.setAttribute("href", cfg.student);
     if (titleEl) titleEl.textContent = cfg.title;
     if (descriptionEl) descriptionEl.textContent = cfg.description;
+    setAudienceMode(resolveAudience());
 
     modal.classList.add("is-visible");
     modal.setAttribute("aria-hidden", "false");
@@ -247,6 +267,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var authRouteMatch = pathname.match(/^\/(login|signup)(?:\/(educator|student))?\/?$/);
   if (authRouteMatch) {
+    if (authRouteMatch[2]) {
+      setAudienceMode(authRouteMatch[2]);
+    }
     openModal(authRouteMatch[1]);
   }
 });
