@@ -1,0 +1,44 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI powered typing platform illustration">
+  <defs>
+    <linearGradient id="bg" x1="84" y1="36" x2="864" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="1" stop-color="#E0E7FF"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="240" y1="168" x2="732" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="40" fill="url(#bg)"/>
+  <circle cx="144" cy="124" r="82" fill="#BFDBFE" opacity="0.65"/>
+  <circle cx="822" cy="530" r="112" fill="#C7D2FE" opacity="0.7"/>
+
+  <rect x="170" y="132" width="620" height="376" rx="28" fill="url(#panel)"/>
+  <rect x="208" y="174" width="546" height="286" rx="20" fill="#F8FAFC"/>
+
+  <rect x="248" y="214" width="250" height="18" rx="9" fill="#CBD5E1"/>
+  <rect x="248" y="248" width="334" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="248" y="274" width="302" height="14" rx="7" fill="#E2E8F0"/>
+
+  <rect x="248" y="316" width="230" height="98" rx="16" fill="#EEF2FF"/>
+  <rect x="502" y="316" width="214" height="98" rx="16" fill="#E0F2FE"/>
+
+  <circle cx="316" cy="365" r="26" fill="url(#chip)"/>
+  <rect x="354" y="350" width="102" height="10" rx="5" fill="#94A3B8"/>
+  <rect x="354" y="370" width="80" height="10" rx="5" fill="#CBD5E1"/>
+
+  <circle cx="560" cy="365" r="26" fill="url(#chip)"/>
+  <rect x="598" y="350" width="92" height="10" rx="5" fill="#94A3B8"/>
+  <rect x="598" y="370" width="72" height="10" rx="5" fill="#CBD5E1"/>
+
+  <rect x="302" y="492" width="356" height="20" rx="10" fill="#334155"/>
+  <rect x="410" y="514" width="142" height="16" rx="8" fill="#1E293B"/>
+
+  <path d="M116 454C203 402 282 382 366 394" stroke="#60A5FA" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <path d="M842 188C754 232 686 270 592 290" stroke="#A78BFA" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+</svg>

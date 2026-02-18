@@ -1,0 +1,52 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Admin illustration with district analytics dashboard">
+  <defs>
+    <linearGradient id="bgA" x1="72" y1="56" x2="896" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF2FF"/>
+      <stop offset="1" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="panelA" x1="176" y1="116" x2="784" y2="508" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="shadowA" x="128" y="86" width="704" height="474" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="640" rx="34" fill="url(#bgA)"/>
+  <circle cx="132" cy="124" r="70" fill="#C7D2FE" opacity="0.55"/>
+  <circle cx="826" cy="536" r="96" fill="#BFDBFE" opacity="0.62"/>
+
+  <g filter="url(#shadowA)">
+    <rect x="160" y="104" width="640" height="434" rx="24" fill="url(#panelA)"/>
+    <rect x="192" y="136" width="576" height="370" rx="16" fill="#F8FAFC"/>
+  </g>
+
+  <rect x="224" y="168" width="188" height="18" rx="9" fill="#334155"/>
+  <rect x="224" y="196" width="254" height="12" rx="6" fill="#94A3B8"/>
+
+  <rect x="224" y="232" width="126" height="82" rx="12" fill="#DBEAFE"/>
+  <rect x="364" y="232" width="126" height="82" rx="12" fill="#E0E7FF"/>
+  <rect x="504" y="232" width="126" height="82" rx="12" fill="#DCFCE7"/>
+  <rect x="644" y="232" width="92" height="82" rx="12" fill="#FEF3C7"/>
+
+  <rect x="224" y="336" width="338" height="146" rx="14" fill="#EFF6FF"/>
+  <path d="M248 458L294 424L344 436L396 398L454 412L504 384L536 350" stroke="#2563EB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="294" cy="424" r="7" fill="#2563EB"/>
+  <circle cx="396" cy="398" r="7" fill="#2563EB"/>
+  <circle cx="536" cy="350" r="7" fill="#2563EB"/>
+
+  <rect x="578" y="336" width="158" height="146" rx="14" fill="#EEF2FF"/>
+  <rect x="600" y="432" width="20" height="28" rx="5" fill="#4F46E5"/>
+  <rect x="628" y="408" width="20" height="52" rx="5" fill="#4F46E5"/>
+  <rect x="656" y="386" width="20" height="74" rx="5" fill="#4F46E5"/>
+  <rect x="684" y="358" width="20" height="102" rx="5" fill="#4F46E5"/>
+
+  <circle cx="100" cy="498" r="38" fill="#1D4ED8"/>
+  <rect x="70" y="536" width="60" height="22" rx="11" fill="#2563EB"/>
+  <circle cx="100" cy="492" r="12" fill="#93C5FD"/>
+
+  <circle cx="858" cy="152" r="38" fill="#4F46E5"/>
+  <rect x="828" y="190" width="60" height="22" rx="11" fill="#6366F1"/>
+  <circle cx="858" cy="146" r="12" fill="#C4B5FD"/>
+</svg>

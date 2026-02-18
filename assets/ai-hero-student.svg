@@ -1,0 +1,44 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Student illustration with typing game progress">
+  <defs>
+    <linearGradient id="bgS" x1="88" y1="44" x2="892" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F3FF"/>
+      <stop offset="1" stop-color="#EDE9FE"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="34" fill="url(#bgS)"/>
+  <circle cx="818" cy="124" r="72" fill="#DDD6FE" opacity="0.65"/>
+  <circle cx="148" cy="532" r="94" fill="#C4B5FD" opacity="0.45"/>
+
+  <rect x="126" y="96" width="708" height="440" rx="26" fill="#4C1D95"/>
+  <rect x="160" y="132" width="640" height="368" rx="16" fill="#F8FAFC"/>
+
+  <rect x="194" y="166" width="238" height="18" rx="9" fill="#7C3AED"/>
+  <rect x="194" y="194" width="180" height="12" rx="6" fill="#C4B5FD"/>
+
+  <rect x="194" y="232" width="392" height="158" rx="14" fill="#F3E8FF"/>
+  <path d="M220 358L268 310L316 330L366 290L420 304L472 270L560 294" stroke="#8B5CF6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="268" cy="310" r="7" fill="#8B5CF6"/>
+  <circle cx="366" cy="290" r="7" fill="#8B5CF6"/>
+  <circle cx="472" cy="270" r="7" fill="#8B5CF6"/>
+
+  <rect x="606" y="232" width="162" height="158" rx="14" fill="#EDE9FE"/>
+  <rect x="632" y="254" width="110" height="26" rx="13" fill="#A78BFA"/>
+  <rect x="632" y="298" width="110" height="26" rx="13" fill="#8B5CF6"/>
+  <rect x="632" y="342" width="110" height="26" rx="13" fill="#7C3AED"/>
+
+  <rect x="244" y="420" width="472" height="62" rx="14" fill="#E9D5FF"/>
+  <rect x="276" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="320" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="364" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="408" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="452" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="496" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="540" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="584" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+  <rect x="628" y="444" width="34" height="14" rx="7" fill="#A855F7"/>
+
+  <circle cx="860" cy="502" r="36" fill="#8B5CF6"/>
+  <rect x="832" y="536" width="56" height="20" rx="10" fill="#7C3AED"/>
+  <circle cx="860" cy="496" r="11" fill="#DDD6FE"/>
+</svg>

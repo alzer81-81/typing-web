@@ -1,0 +1,37 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Homeschool illustration with home study setup">
+  <defs>
+    <linearGradient id="bgH" x1="96" y1="56" x2="876" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7ED"/>
+      <stop offset="1" stop-color="#FFEDD5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="34" fill="url(#bgH)"/>
+  <circle cx="150" cy="130" r="70" fill="#FED7AA" opacity="0.55"/>
+  <circle cx="820" cy="520" r="92" fill="#FDBA74" opacity="0.35"/>
+
+  <rect x="128" y="108" width="704" height="424" rx="24" fill="#FFF"/>
+  <rect x="162" y="142" width="636" height="356" rx="16" fill="#FFFBEB"/>
+
+  <path d="M188 308L292 224L396 308" stroke="#EA580C" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="214" y="308" width="156" height="128" rx="14" fill="#FDBA74"/>
+  <rect x="275" y="352" width="36" height="84" rx="8" fill="#FB923C"/>
+  <rect x="228" y="326" width="34" height="26" rx="6" fill="#FFF"/>
+  <rect x="322" y="326" width="34" height="26" rx="6" fill="#FFF"/>
+
+  <rect x="420" y="182" width="346" height="206" rx="14" fill="#FFF"/>
+  <rect x="448" y="212" width="204" height="14" rx="7" fill="#F97316"/>
+  <rect x="448" y="238" width="164" height="10" rx="5" fill="#FDBA74"/>
+  <rect x="448" y="272" width="288" height="96" rx="12" fill="#FFEDD5"/>
+  <circle cx="506" cy="320" r="22" fill="#F59E0B"/>
+  <rect x="540" y="312" width="168" height="10" rx="5" fill="#FB923C"/>
+  <rect x="540" y="332" width="132" height="10" rx="5" fill="#FDBA74"/>
+
+  <rect x="188" y="448" width="578" height="34" rx="12" fill="#FED7AA"/>
+  <rect x="220" y="458" width="120" height="14" rx="7" fill="#FB923C"/>
+  <rect x="354" y="458" width="92" height="14" rx="7" fill="#FDBA74"/>
+
+  <circle cx="856" cy="160" r="36" fill="#FB923C"/>
+  <rect x="828" y="194" width="56" height="20" rx="10" fill="#F97316"/>
+  <circle cx="856" cy="154" r="11" fill="#FED7AA"/>
+</svg>

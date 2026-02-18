@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Typing.com – Hub</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/main.js" defer></script>
+</head>
+<body class="homepage">
+  <header>
+    <div class="header-inner homepage-header">
+      <div class="logo">
+        <a href="/"><img src="/typing.svg" alt="Typing.com" /></a>
+      </div>
+      <nav class="nav-links">
+        <a href="/whats-new/">What's New</a>
+        <span class="nav-separator">|</span>
+        <a href="/login/" data-auth-trigger="login">Log In</a>
+        <a href="/signup/" data-auth-trigger="signup">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main homepage-main">
+    <div class="home-top-band">
+      <section class="home-hero">
+        <h1>The Typing Platform Built for Schools and Learners</h1>
+        <p>Interactive lessons, real-time progress tracking, and tools for teachers, students, and families.</p>
+      </section>
+
+      <section class="home-persona-band">
+        <div class="home-persona-grid">
+          <a class="home-persona-card" href="/admin/">
+            <span class="home-emoji" aria-hidden="true">🏫</span>
+            <h2>I'm an Admin</h2>
+            <p>District oversight, rostering integrations, school-wide reporting.</p>
+            <strong>Explore Admin Tools</strong>
+          </a>
+          <a class="home-persona-card" href="/teacher/">
+            <span class="home-emoji" aria-hidden="true">👩‍🏫</span>
+            <h2>I'm a Teacher</h2>
+            <p>Classroom management, assignments, and progress tracking.</p>
+            <strong>Explore Teacher Tools</strong>
+          </a>
+          <a class="home-persona-card" href="/homeschool/">
+            <span class="home-emoji" aria-hidden="true">🏡</span>
+            <h2>I'm Homeschooling</h2>
+            <p>Parents and co-ops running learning at home.</p>
+            <strong>Explore Homeschooling Tools</strong>
+          </a>
+          <a class="home-persona-card" href="/students/">
+            <span class="home-emoji" aria-hidden="true">🎓</span>
+            <h2>I'm a Student</h2>
+            <p>Interactive lessons, games, and progress tracking.</p>
+            <strong>Start Learning</strong>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="homepage-footer">
+    <div class="footer-inner homepage-footer-inner">
+      <div class="footer-links">
+        <a href="/press/">In the Press</a>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/resources/">Resources</a>
+        <a href="/support/">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="auth-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="auth-modal-title">Log In</h2>
+        <button class="modal-close" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">Choose whether you're logging in as an educator or a student.</p>
+        <div class="modal-actions">
+          <a href="/login/educator/" class="btn" data-role="educator">Educator</a>
+          <a href="/login/student/" class="btn btn-secondary" data-role="student">Student</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

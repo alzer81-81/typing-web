@@ -1,0 +1,45 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Teacher illustration with classroom assignment board">
+  <defs>
+    <linearGradient id="bgT" x1="96" y1="42" x2="884" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFDF5"/>
+      <stop offset="1" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <linearGradient id="boardT" x1="148" y1="96" x2="818" y2="516" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14532D"/>
+      <stop offset="1" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="34" fill="url(#bgT)"/>
+  <circle cx="814" cy="120" r="74" fill="#86EFAC" opacity="0.55"/>
+  <circle cx="142" cy="528" r="86" fill="#BBF7D0" opacity="0.62"/>
+
+  <rect x="134" y="88" width="692" height="444" rx="26" fill="url(#boardT)"/>
+  <rect x="166" y="120" width="628" height="380" rx="16" fill="#F8FAFC"/>
+
+  <rect x="198" y="154" width="282" height="20" rx="10" fill="#166534"/>
+  <rect x="198" y="184" width="210" height="12" rx="6" fill="#86EFAC"/>
+
+  <rect x="198" y="224" width="384" height="170" rx="14" fill="#F0FDF4"/>
+  <rect x="220" y="250" width="172" height="12" rx="6" fill="#22C55E"/>
+  <rect x="220" y="274" width="228" height="10" rx="5" fill="#86EFAC"/>
+  <rect x="220" y="296" width="198" height="10" rx="5" fill="#A7F3D0"/>
+  <rect x="220" y="326" width="340" height="52" rx="10" fill="#DCFCE7"/>
+
+  <rect x="598" y="224" width="164" height="170" rx="14" fill="#ECFDF5"/>
+  <circle cx="648" cy="276" r="18" fill="#16A34A"/>
+  <rect x="676" y="268" width="68" height="10" rx="5" fill="#22C55E"/>
+  <rect x="676" y="286" width="50" height="10" rx="5" fill="#86EFAC"/>
+  <circle cx="648" cy="334" r="18" fill="#16A34A"/>
+  <rect x="676" y="326" width="68" height="10" rx="5" fill="#22C55E"/>
+  <rect x="676" y="344" width="44" height="10" rx="5" fill="#86EFAC"/>
+
+  <rect x="198" y="416" width="564" height="60" rx="12" fill="#DCFCE7"/>
+  <rect x="228" y="438" width="112" height="16" rx="8" fill="#16A34A"/>
+  <rect x="354" y="438" width="86" height="16" rx="8" fill="#22C55E"/>
+  <rect x="454" y="438" width="92" height="16" rx="8" fill="#4ADE80"/>
+
+  <circle cx="860" cy="498" r="38" fill="#22C55E"/>
+  <rect x="830" y="536" width="60" height="20" rx="10" fill="#16A34A"/>
+  <circle cx="860" cy="492" r="11" fill="#BBF7D0"/>
+</svg>
