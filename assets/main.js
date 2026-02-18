@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "<a href=\"" + cfg.educator + "?role=admin\" class=\"btn\">Admin</a>" +
         "<a href=\"" + cfg.educator + "?role=teacher\" class=\"btn\">Teacher</a>" +
         "<a href=\"" + cfg.educator + "?role=homeschool\" class=\"btn\">Homeschooler</a>" +
-        "<a href=\"" + cfg.student + "?role=students\" class=\"btn btn-secondary\">Student</a>";
+        "<a href=\"" + cfg.student + "?role=students\" class=\"btn btn-secondary\">Individual</a>";
       return;
     }
 
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (titleEl) titleEl.textContent = cfg.title;
     if (descriptionEl) {
       descriptionEl.textContent = document.body.classList.contains("homepage")
-        ? "Are you an admin, teacher, homeschooler, or student?"
+        ? "Are you an admin, teacher, homeschooler, or individual?"
         : cfg.description;
     }
     renderAuthActions(mode);
