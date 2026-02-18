@@ -167,8 +167,27 @@ document.addEventListener("DOMContentLoaded", function () {
     hydrateSharedTopicPage(topicMatch[1]);
   }
 
+  document.querySelectorAll("header .nav-links a[href]").forEach(function (link) {
+    var linkPathname = new URL(link.getAttribute("href"), document.baseURI).pathname;
+    linkPathname = linkPathname.indexOf(basePathname) === 0 ? linkPathname.slice(basePathname.length) : linkPathname;
+    if (!linkPathname) linkPathname = "/";
+    if (linkPathname.charAt(0) !== "/") linkPathname = "/" + linkPathname;
+
+    if (linkPathname === "/login/" || linkPathname === "/login/educator/" || linkPathname === "/login/student/") {
+      link.setAttribute("data-auth-trigger", "login");
+      link.setAttribute("href", "login/");
+    }
+    if (linkPathname === "/signup/" || linkPathname === "/signup/educator/" || linkPathname === "/signup/student/") {
+      link.setAttribute("data-auth-trigger", "signup");
+      link.setAttribute("href", "signup/");
+    }
+  });
+
   var modal = document.getElementById("auth-modal");
-  if (!modal) return;
+  if (!modal) {
+    modal = createAuthModal();
+    document.body.appendChild(modal);
+  }
 
   var educatorBtn = modal.querySelector("[data-role=\"educator\"]");
   var studentBtn = modal.querySelector("[data-role=\"student\"]");
@@ -225,7 +244,34 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") closeModal();
   });
+
+  var authRouteMatch = pathname.match(/^\/(login|signup)(?:\/(educator|student))?\/?$/);
+  if (authRouteMatch) {
+    openModal(authRouteMatch[1]);
+  }
 });
+
+function createAuthModal() {
+  var wrapper = document.createElement("div");
+  wrapper.className = "modal-backdrop";
+  wrapper.id = "auth-modal";
+  wrapper.setAttribute("aria-hidden", "true");
+  wrapper.innerHTML =
+    "<div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"auth-modal-title\">" +
+      "<div class=\"modal-header\">" +
+        "<h2 class=\"modal-title\" id=\"auth-modal-title\">Log In</h2>" +
+        "<button class=\"modal-close\" type=\"button\" aria-label=\"Close\">&times;</button>" +
+      "</div>" +
+      "<div class=\"modal-body\">" +
+        "<p class=\"modal-description\">Choose whether you're logging in as an educator or a student.</p>" +
+        "<div class=\"modal-actions\">" +
+          "<a href=\"login/educator/\" class=\"btn\" data-role=\"educator\">Educator</a>" +
+          "<a href=\"login/student/\" class=\"btn btn-secondary\" data-role=\"student\">Student</a>" +
+        "</div>" +
+      "</div>" +
+    "</div>";
+  return wrapper;
+}
 
 function hydratePersonaPage(personaKey) {
   var personaMap = {
