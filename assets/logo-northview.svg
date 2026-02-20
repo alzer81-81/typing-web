@@ -1,0 +1,5 @@
+<svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="26" r="14" fill="#2563EB"/>
+  <path d="M14 32V20L26 32V20" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="31" fill="#1f2937" font-size="18" font-family="Quicksand, sans-serif" font-weight="700">Northview</text>
+</svg>

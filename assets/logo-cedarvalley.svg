@@ -1,0 +1,5 @@
+<svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="12" width="28" height="28" rx="6" fill="#EA580C"/>
+  <path d="M12 31V21H28" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="31" fill="#1f2937" font-size="18" font-family="Quicksand, sans-serif" font-weight="700">Cedar Valley</text>
+</svg>

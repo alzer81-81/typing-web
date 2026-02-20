@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body class="teacher-landing">
+<body class="teacher-landing teacher-accordion-page">
   <header>
     <div class="header-inner">
       <div class="logo">
@@ -51,6 +51,340 @@
         <img src="assets/ai-hero-teacher.svg" alt="Teacher view of individual progress" class="hero-image" />
       </div>
     </section>
+
+    <div class="teacher-below-hero">
+      <section class="teacher-trust-band" aria-label="Trust and outcomes">
+        <h2>Trusted by schools and districts across the country</h2>
+        <div class="teacher-trust-logos">
+          <span>Northview Unified</span>
+          <span>Pinecrest Academy</span>
+          <span>Riverbend ISD</span>
+          <span>Summit Prep</span>
+          <span>Maple Grove Schools</span>
+          <span>Cedar Valley District</span>
+        </div>
+      </section>
+
+      <div class="teacher-section-divider" aria-hidden="true"></div>
+
+      <section class="teacher-learning-section" aria-label="Student Learning Features">
+        <div class="teacher-learning-heading">
+          <p class="section-pill">Student Learning Features</p>
+          <h2>Everything You Need to Support Student Learning — In One Place</h2>
+        </div>
+        <div class="teacher-learning-tabs" data-learning-tabs>
+          <div class="teacher-tab-list" role="tablist" aria-label="Student Learning Feature Tabs">
+            <button type="button" class="teacher-tab is-active" role="tab" aria-selected="true" data-tab-trigger data-tab-target="fast-typing">Fast Typing</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="games">Games</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="coding">Coding</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="ai-lessons">AI Lessons</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="digital-citizenship">Digital Citizenship</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="track-progress">Track Progress</button>
+          </div>
+
+          <article class="teacher-tab-panel is-active" role="tabpanel" data-tab-panel="fast-typing">
+            <div class="teacher-tab-copy">
+              <h3>Fast Typing</h3>
+              <p>Build speed and accuracy with structured keyboarding routines designed to create fluency through short, repeatable sessions.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-fast-typing.svg" alt="Fast typing lesson interface" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="games" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Games</h3>
+              <p>Keep learners motivated with skill-aligned games that reinforce key patterns while making daily practice feel rewarding.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-games.svg" alt="Typing games experience" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="coding" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Coding</h3>
+              <p>Introduce coding-friendly typing habits so students become comfortable with symbols, shortcuts, and precise keyboard control.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-coding.svg" alt="Coding and keyboarding lesson view" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="ai-lessons" hidden>
+            <div class="teacher-tab-copy">
+              <h3>AI Lessons</h3>
+              <p>Use adaptive AI pathways to personalize practice, targeting each student’s pace, accuracy gaps, and confidence level.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-ai-lessons.svg" alt="AI-powered personalized typing lesson" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="digital-citizenship" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Digital Citizenship</h3>
+              <p>Blend keyboarding with responsible online behavior so students practice communication, safety, and respect in digital spaces.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-digital-citizenship.svg" alt="Digital citizenship learning module" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="track-progress" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Track Progress</h3>
+              <p>Monitor growth across speed, accuracy, and completion with clear reporting tools that make intervention and celebration easy.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tab-track-progress.svg" alt="Student progress tracking dashboard" />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-curriculum-panel" aria-label="Curriculum highlights">
+        <div class="teacher-curriculum-heading">
+          <p class="section-pill">Curriculum Highlights</p>
+          <h2>A Complete Curriculum Built to Drive Student Growth</h2>
+          <p>From keyboarding fluency to digital citizenship, our curriculum supports real classroom outcomes with 19,867+ lessons.</p>
+        </div>
+        <div class="teacher-curriculum-core">
+          <article class="teacher-curriculum-card teacher-curriculum-card-core">
+            <span class="teacher-curriculum-icon">⌨️</span>
+            <h3>Typing Lessons</h3>
+            <p>Grade-aligned keyboarding pathways that build fluency through structured, repeatable practice.</p>
+          </article>
+          <article class="teacher-curriculum-card teacher-curriculum-card-core">
+            <span class="teacher-curriculum-icon">📊</span>
+            <h3>Progress + Assessment</h3>
+            <p>Use tests and reporting to benchmark growth, spot learning gaps, and guide interventions.</p>
+          </article>
+          <article class="teacher-curriculum-card teacher-curriculum-card-core">
+            <span class="teacher-curriculum-icon">🎮</span>
+            <h3>Engagement + Motivation</h3>
+            <p>Blend games and adaptive AI lessons to keep students engaged while strengthening core skills.</p>
+          </article>
+        </div>
+        <div class="teacher-curriculum-support">
+          <article class="teacher-curriculum-card">
+            <h3>Digital Literacy</h3>
+            <p>Practical computer fluency for everyday classroom tasks.</p>
+          </article>
+          <article class="teacher-curriculum-card">
+            <h3>Digital Citizenship</h3>
+            <p>Responsible, safe, and respectful behavior online.</p>
+          </article>
+          <article class="teacher-curriculum-card">
+            <h3>Coding Fundamentals</h3>
+            <p>Intro concepts like sequencing, logic, and debugging.</p>
+          </article>
+          <article class="teacher-curriculum-card">
+            <h3>Computer Applications</h3>
+            <p>Hands-on work with productivity and problem-solving tools.</p>
+          </article>
+          <article class="teacher-curriculum-card">
+            <h3>AI Literacy</h3>
+            <p>Age-appropriate AI concepts, ethics, and critical thinking.</p>
+          </article>
+        </div>
+        <div class="teacher-curriculum-cta">
+          <p>Need a full rollout plan across schools, classes, and home programs?</p>
+          <a href="curriculum/" class="btn btn-secondary">See Full Curriculum Map</a>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-learning-section teacher-features-section" aria-label="Teacher Features">
+        <div class="teacher-learning-heading">
+          <p class="section-pill">Teacher Features</p>
+          <h2>Everything Teachers Need to Run Keyboarding with Confidence</h2>
+        </div>
+        <div class="teacher-learning-tabs teacher-learning-tabs-muted" data-learning-tabs>
+          <div class="teacher-tab-list" role="tablist" aria-label="Teacher Feature Tabs">
+            <button type="button" class="teacher-tab is-active" role="tab" aria-selected="true" data-tab-trigger data-tab-target="assign-lessons">Assign Lessons</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="manage-classes">Manage Classes</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="auto-grading">Auto Grading</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="differentiate">Differentiate</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="reporting">Reporting</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="integrations">Integrations</button>
+          </div>
+
+          <article class="teacher-tab-panel is-active" role="tabpanel" data-tab-panel="assign-lessons">
+            <div class="teacher-tab-copy">
+              <h3>Assign Lessons</h3>
+              <p>Launch targeted typing activities by class, group, or individual student so instruction stays focused and easy to manage.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-assign-lessons.svg" alt="Assign typing lessons dashboard" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="manage-classes" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Manage Classes</h3>
+              <p>Organize rosters, move students between groups, and keep every class set up with minimal admin overhead.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-manage-classes.svg" alt="Classroom roster management view" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="auto-grading" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Auto Grading</h3>
+              <p>Save planning time with automatic scoring on speed and accuracy while still seeing where students need support.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-auto-grading.svg" alt="Automatic grading and scoring summary" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="differentiate" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Differentiate</h3>
+              <p>Adjust pacing and lesson paths so advanced students move ahead while others get the reinforcement they need.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-differentiate.svg" alt="Differentiated lesson path controls" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="reporting" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Reporting</h3>
+              <p>Track class and student outcomes with clear reports you can use for conferences, interventions, and team planning.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-reporting.svg" alt="Teacher reporting and progress analytics" />
+            </div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="integrations" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Integrations</h3>
+              <p>Connect with classroom workflows and platforms you already use to keep setup simple and rollout consistent.</p>
+            </div>
+            <div class="teacher-tab-media">
+              <img src="assets/teacher-tool-integrations.svg" alt="Classroom tool integration settings" />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-security-section" aria-label="Security and Safety">
+        <div class="teacher-security-top">
+          <div class="teacher-security-left">
+            <div class="teacher-security-shield" aria-hidden="true"></div>
+            <article class="teacher-security-note note-one">
+              <span>🪪</span>
+              <p>Personally identifiable information is never required for students to start learning.</p>
+            </article>
+            <article class="teacher-security-note note-two">
+              <span>🔐</span>
+              <p>All communication is encrypted in transit with modern TLS protections.</p>
+            </article>
+            <article class="teacher-security-note note-three">
+              <span>🛡️</span>
+              <p>Typing.com does not sell student data and keeps access controls strict.</p>
+            </article>
+          </div>
+          <div class="teacher-security-right">
+            <p class="section-pill">Security &amp; Safety</p>
+            <h2>Strict Privacy and Data Protection</h2>
+            <ul>
+              <li>Students never need an email address to participate.</li>
+              <li>PII controls are managed at the educator and admin level.</li>
+              <li>Roster data can sync securely from SIS workflows.</li>
+            </ul>
+            <a href="signup/educator/" class="btn">Try It Now</a>
+          </div>
+        </div>
+        <div class="teacher-security-badges">
+          <span>SSL Secure</span>
+          <span>Penetration Tested</span>
+          <span>1EdTech Certified</span>
+          <span>NIST Privacy Framework</span>
+          <span>Google for Education Partner</span>
+        </div>
+      </section>
+
+      <section class="teacher-faq-section" aria-label="Frequently Asked Questions">
+        <div class="teacher-faq-heading">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="teacher-faq-grid" data-faq>
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-free">
+              Is this really free for teachers?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-free" hidden>
+              Yes. Core typing lessons, student practice, and teacher management tools are available without cost for classroom use.
+            </div>
+          </article>
+
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-google">
+              Can I sync with Google Classroom?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-google" hidden>
+              Yes. Educators can connect classroom rosters and streamline setup using supported integration workflows.
+            </div>
+          </article>
+
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-join">
+              How do students join my class?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-join" hidden>
+              Students can join using class links or teacher-managed roster imports, depending on your preferred setup model.
+            </div>
+          </article>
+
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-games">
+              Can I disable games?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-games" hidden>
+              Yes. Teachers can configure learning focus and control game exposure based on classroom goals and policy.
+            </div>
+          </article>
+
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-devices">
+              Does it work on Chromebooks and iPads?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-devices" hidden>
+              Typing.com runs in modern browsers and supports common school device environments, including Chromebooks and iPads.
+            </div>
+          </article>
+
+          <article class="teacher-faq-item">
+            <button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="faq-data">
+              Is student data protected?
+            </button>
+            <div class="teacher-faq-answer" data-faq-panel="faq-data" hidden>
+              Yes. Student privacy and data protection are core requirements, with strict controls around PII and platform access.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="teacher-bottom-cta" aria-label="Sign up call to action">
+        <div class="teacher-bottom-cta-inner">
+          <h2>Start Teaching Typing the Easy Way</h2>
+          <p class="teacher-bottom-cta-lead">Set up your class in minutes. No credit card required.</p>
+          <a href="signup/educator/" class="teacher-bottom-cta-button">Create Free Teacher Account</a>
+          <p class="teacher-bottom-cta-note">Free forever plan available.</p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>

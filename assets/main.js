@@ -162,9 +162,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var topicMatch = pathname.match(/^\/(curriculum|standards|accessibility|plus)\/?$/);
   if (topicMatch) {
-    document.body.classList.add("shared-topic-page");
-    document.body.classList.add("topic-" + topicMatch[1]);
-    hydrateSharedTopicPage(topicMatch[1]);
+    if (topicMatch[1] !== "curriculum") {
+      document.body.classList.add("shared-topic-page");
+      document.body.classList.add("topic-" + topicMatch[1]);
+      hydrateSharedTopicPage(topicMatch[1]);
+    }
   }
 
   document.querySelectorAll("header .nav-links a[href]").forEach(function (link) {
@@ -292,6 +294,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (authRouteMatch) {
     openModal(authRouteMatch[1]);
   }
+
+  initTeacherLearningTabs();
+  initTeacherFaq();
 });
 
 function createAuthModal() {
@@ -446,4 +451,72 @@ function renderSections(main, config) {
       "<a href=\"" + config.ctaHref + "\" class=\"btn\">" + config.ctaLabel + "</a>" +
     "</section>"
   );
+}
+
+function initTeacherLearningTabs() {
+  var tabRoots = document.querySelectorAll("[data-learning-tabs]");
+  if (!tabRoots.length) return;
+
+  tabRoots.forEach(function (tabRoot) {
+    var triggers = tabRoot.querySelectorAll("[data-tab-trigger]");
+    var panels = tabRoot.querySelectorAll("[data-tab-panel]");
+    if (!triggers.length || !panels.length) return;
+
+    function setActiveTab(targetKey) {
+      triggers.forEach(function (trigger) {
+        var isActive = trigger.getAttribute("data-tab-target") === targetKey;
+        trigger.classList.toggle("is-active", isActive);
+        trigger.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      panels.forEach(function (panel) {
+        var isActive = panel.getAttribute("data-tab-panel") === targetKey;
+        panel.classList.toggle("is-active", isActive);
+        panel.hidden = !isActive;
+      });
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        setActiveTab(trigger.getAttribute("data-tab-target"));
+      });
+    });
+
+    var defaultActive = tabRoot.querySelector("[data-tab-trigger].is-active");
+    var initialKey = defaultActive ? defaultActive.getAttribute("data-tab-target") : triggers[0].getAttribute("data-tab-target");
+    setActiveTab(initialKey);
+  });
+}
+
+function initTeacherFaq() {
+  var faqRoots = document.querySelectorAll("[data-faq]");
+  if (!faqRoots.length) return;
+
+  faqRoots.forEach(function (faqRoot) {
+    var triggers = faqRoot.querySelectorAll("[data-faq-trigger]");
+    var panels = faqRoot.querySelectorAll("[data-faq-panel]");
+    if (!triggers.length || !panels.length) return;
+
+    function setOpen(targetKey) {
+      triggers.forEach(function (trigger) {
+        var isOpen = trigger.getAttribute("data-faq-target") === targetKey;
+        trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+
+      panels.forEach(function (panel) {
+        var isOpen = panel.getAttribute("data-faq-panel") === targetKey;
+        panel.hidden = !isOpen;
+      });
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        var key = trigger.getAttribute("data-faq-target");
+        var isOpen = trigger.getAttribute("aria-expanded") === "true";
+        setOpen(isOpen ? null : key);
+      });
+    });
+
+    setOpen(null);
+  });
 }
