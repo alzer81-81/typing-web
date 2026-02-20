@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var topicMatch = pathname.match(/^\/(curriculum|standards|accessibility|plus)\/?$/);
   if (topicMatch) {
-    if (topicMatch[1] !== "curriculum") {
+    if (topicMatch[1] !== "curriculum" && topicMatch[1] !== "accessibility") {
       document.body.classList.add("shared-topic-page");
       document.body.classList.add("topic-" + topicMatch[1]);
       hydrateSharedTopicPage(topicMatch[1]);
@@ -295,9 +295,41 @@ document.addEventListener("DOMContentLoaded", function () {
     openModal(authRouteMatch[1]);
   }
 
+  ensureFooterLanguageSelector();
   initTeacherLearningTabs();
   initTeacherFaq();
 });
+
+function ensureFooterLanguageSelector() {
+  var footerInners = document.querySelectorAll("footer .footer-inner");
+  if (!footerInners.length) return;
+
+  footerInners.forEach(function (footerInner) {
+    if (footerInner.querySelector(".footer-language")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.className = "footer-language";
+
+    var label = document.createElement("label");
+    label.className = "footer-language-label";
+    label.setAttribute("for", "footer-language-select");
+    label.textContent = "Language";
+
+    var select = document.createElement("select");
+    select.id = "footer-language-select";
+    select.className = "footer-language-select";
+    select.setAttribute("aria-label", "Language selector");
+    select.innerHTML =
+      "<option value=\"en\" selected>English</option>" +
+      "<option value=\"es\">Spanish</option>" +
+      "<option value=\"fr\">French</option>" +
+      "<option value=\"de\">German</option>";
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    footerInner.appendChild(wrapper);
+  });
+}
 
 function createAuthModal() {
   var wrapper = document.createElement("div");

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body>
+<body class="homeschool-accordion-page">
   <header>
     <div class="header-inner">
       <div class="logo">
@@ -39,18 +39,225 @@
       <div>
         <div class="hero-pill">For homeschool</div>
         <h1>Bring structured typing into your home</h1>
-        <p class="hero-lead">Give learners a familiar Typing.com experience with lessons that fit into your family’s schedule.</p>
+        <p class="hero-lead">Give your learners a consistent typing routine with flexible lessons, progress tracking, and engaging practice built for homeschool life.</p>
         <ul class="hero-list">
-          <li>Short, guided lessons that work for multi‑age households.</li>
-          <li>Simple progress views so you can see who’s on track.</li>
-          <li>Practice activities that feel like play, not worksheets.</li>
+          <li>Short daily lessons that fit multi-age schedules.</li>
+          <li>Simple parent visibility for progress and consistency.</li>
+          <li>Games and practice that keep motivation high.</li>
         </ul>
         <a href="signup/educator/" class="btn btn-large hero-cta">Sign Up</a>
       </div>
       <div class="hero-media">
-        <img src="assets/ai-hero-homeschool.svg" alt="Homeschool individual using Typing.com" class="hero-image" />
+        <img src="assets/ai-hero-homeschool.svg" alt="Homeschool learner using Typing.com" class="hero-image" />
       </div>
     </section>
+
+    <div class="teacher-below-hero">
+      <section class="teacher-trust-band" aria-label="Trust and outcomes">
+        <h2>Trusted by homeschool families and learning groups</h2>
+        <div class="teacher-trust-logos">
+          <span>Oak Meadow Co-op</span>
+          <span>River Trail Homeschool</span>
+          <span>Maple Learning Pod</span>
+          <span>Summit Home Academy</span>
+          <span>Cedar Grove Families</span>
+          <span>North Star Homeschool</span>
+        </div>
+      </section>
+
+      <div class="teacher-section-divider" aria-hidden="true"></div>
+
+      <section class="teacher-learning-section" aria-label="Homeschool Learning Features">
+        <div class="teacher-learning-heading">
+          <p class="section-pill">Homeschool Learning Features</p>
+          <h2>Everything You Need to Support Learning at Home — In One Place</h2>
+        </div>
+        <div class="teacher-learning-tabs" data-learning-tabs>
+          <div class="teacher-tab-list" role="tablist" aria-label="Homeschool features tabs">
+            <button type="button" class="teacher-tab is-active" role="tab" aria-selected="true" data-tab-trigger data-tab-target="hs-flexible-lessons">Flexible Lessons</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-independent-practice">Independent Practice</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-multi-age">Multi-Age Support</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-games">Games</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-digital-skills">Digital Skills</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-progress">Track Progress</button>
+          </div>
+
+          <article class="teacher-tab-panel is-active" role="tabpanel" data-tab-panel="hs-flexible-lessons">
+            <div class="teacher-tab-copy">
+              <h3>Flexible Lessons</h3>
+              <p>Run short, structured typing sessions around your family schedule, with lessons that work in daily blocks or weekly plans.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-fast-typing.svg" alt="Flexible homeschool typing lessons" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-independent-practice" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Independent Practice</h3>
+              <p>Learners can practice on their own while you focus on other subjects, then return to review progress together.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-games.svg" alt="Independent typing practice" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-multi-age" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Multi-Age Support</h3>
+              <p>Use one platform for siblings at different levels with pathways that adapt by skill and grade range.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-track-progress.svg" alt="Multi-age homeschool setup" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-games" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Games</h3>
+              <p>Keep motivation high with game-based reinforcement that helps learners build consistency without burnout.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-digital-citizenship.svg" alt="Homeschool typing games" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-digital-skills" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Digital Skills</h3>
+              <p>Pair keyboard fluency with digital literacy, citizenship, and coding-ready habits for future learning.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-coding.svg" alt="Homeschool digital skills" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-progress" hidden>
+            <div class="teacher-tab-copy">
+              <h3>Track Progress</h3>
+              <p>See speed and accuracy trends so you can celebrate growth and adjust routines where support is needed.</p>
+            </div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tab-ai-lessons.svg" alt="Homeschool progress tracking" /></div>
+          </article>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-curriculum-panel" aria-label="Homeschool curriculum framework">
+        <div class="teacher-curriculum-heading">
+          <p class="section-pill">Homeschool Curriculum Framework</p>
+          <h2>A Complete Typing Pathway for Home Learning</h2>
+          <p>Use a clear progression that supports writing, digital confidence, and long-term keyboard fluency across all ages.</p>
+        </div>
+        <div class="teacher-curriculum-core">
+          <article class="teacher-curriculum-card teacher-curriculum-card-core"><span class="teacher-curriculum-icon">🏠</span><h3>Home-Friendly Structure</h3><p>Simple pacing designed for flexible homeschool schedules.</p></article>
+          <article class="teacher-curriculum-card teacher-curriculum-card-core"><span class="teacher-curriculum-icon">📚</span><h3>Cross-Subject Fit</h3><p>Supports writing, projects, and day-to-day digital work.</p></article>
+          <article class="teacher-curriculum-card teacher-curriculum-card-core"><span class="teacher-curriculum-icon">🌱</span><h3>Long-Term Growth</h3><p>Builds consistent habits from beginner to advanced fluency.</p></article>
+        </div>
+        <div class="teacher-curriculum-support">
+          <article class="teacher-curriculum-card"><h3>Beginner Pathways</h3><p>First-step keyboard habits.</p></article>
+          <article class="teacher-curriculum-card"><h3>Fluency Practice</h3><p>Daily speed + accuracy work.</p></article>
+          <article class="teacher-curriculum-card"><h3>Digital Literacy</h3><p>Real-world computer confidence.</p></article>
+          <article class="teacher-curriculum-card"><h3>Coding Readiness</h3><p>Keyboard control for coding tasks.</p></article>
+          <article class="teacher-curriculum-card"><h3>Progress Reviews</h3><p>Clear family learning check-ins.</p></article>
+        </div>
+        <div class="teacher-curriculum-cta">
+          <p>Need a complete view of the lesson map?</p>
+          <a href="curriculum/" class="btn btn-secondary">See Curriculum Map</a>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-learning-section teacher-features-section" aria-label="Homeschool Parent Tools">
+        <div class="teacher-learning-heading">
+          <p class="section-pill">Parent Tools</p>
+          <h2>Practical Controls for Running Typing at Home</h2>
+        </div>
+        <div class="teacher-learning-tabs teacher-learning-tabs-muted" data-learning-tabs>
+          <div class="teacher-tab-list" role="tablist" aria-label="Homeschool parent tools tabs">
+            <button type="button" class="teacher-tab is-active" role="tab" aria-selected="true" data-tab-trigger data-tab-target="hs-tools-setup">Easy Setup</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-tools-assign">Assign Practice</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-tools-monitor">Monitor Progress</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-tools-routines">Routines</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-tools-motivation">Motivation</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab-trigger data-tab-target="hs-tools-goals">Goal Setting</button>
+          </div>
+
+          <article class="teacher-tab-panel is-active" role="tabpanel" data-tab-panel="hs-tools-setup">
+            <div class="teacher-tab-copy"><h3>Easy Setup</h3><p>Get started quickly with a clean setup flow built for families, co-ops, and independent learners.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-manage-classes.svg" alt="Homeschool setup tools" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-tools-assign" hidden>
+            <div class="teacher-tab-copy"><h3>Assign Practice</h3><p>Pick lessons and challenges by learner so each child gets focused, level-appropriate practice.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-assign-lessons.svg" alt="Assign homeschool practice" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-tools-monitor" hidden>
+            <div class="teacher-tab-copy"><h3>Monitor Progress</h3><p>See weekly growth across speed and accuracy with progress views that are easy for families to use.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-reporting.svg" alt="Homeschool progress reports" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-tools-routines" hidden>
+            <div class="teacher-tab-copy"><h3>Routines</h3><p>Create repeatable weekly rhythms so typing becomes a sustainable part of your homeschool flow.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-differentiate.svg" alt="Homeschool typing routines" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-tools-motivation" hidden>
+            <div class="teacher-tab-copy"><h3>Motivation</h3><p>Use games, streaks, and milestones to keep learners engaged and practicing consistently.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-auto-grading.svg" alt="Motivation and milestones" /></div>
+          </article>
+
+          <article class="teacher-tab-panel" role="tabpanel" data-tab-panel="hs-tools-goals" hidden>
+            <div class="teacher-tab-copy"><h3>Goal Setting</h3><p>Set practical growth goals by learner and track progress toward meaningful benchmarks at home.</p></div>
+            <div class="teacher-tab-media"><img src="assets/teacher-tool-integrations.svg" alt="Homeschool goal setting" /></div>
+          </article>
+        </div>
+      </section>
+
+      <div class="teacher-bottom-separator" aria-hidden="true"></div>
+
+      <section class="teacher-security-section" aria-label="Security and Safety">
+        <div class="teacher-security-top">
+          <div class="teacher-security-left">
+            <div class="teacher-security-shield" aria-hidden="true"></div>
+            <article class="teacher-security-note note-one"><span>🪪</span><p>No student email is required to start learning at home.</p></article>
+            <article class="teacher-security-note note-two"><span>🔐</span><p>Platform communication is encrypted to protect family data.</p></article>
+            <article class="teacher-security-note note-three"><span>🛡️</span><p>You stay in control of accounts, settings, and learner access.</p></article>
+          </div>
+          <div class="teacher-security-right">
+            <p class="section-pill">Security &amp; Safety</p>
+            <h2>Family-Friendly Privacy and Data Protection</h2>
+            <ul>
+              <li>No personal email required for students.</li>
+              <li>Clear privacy controls for parent-managed accounts.</li>
+              <li>Secure platform practices designed for schools and homes.</li>
+            </ul>
+            <a href="signup/educator/" class="btn">Create Homeschool Account</a>
+          </div>
+        </div>
+        <div class="teacher-security-badges">
+          <span>SSL Secure</span>
+          <span>Penetration Tested</span>
+          <span>1EdTech Certified</span>
+          <span>NIST Privacy Framework</span>
+          <span>Google for Education Partner</span>
+        </div>
+      </section>
+
+      <section class="teacher-faq-section" aria-label="Frequently Asked Questions">
+        <div class="teacher-faq-heading"><h2>Frequently Asked Questions</h2></div>
+        <div class="teacher-faq-grid" data-faq>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-free">Is this free for homeschool families?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-free" hidden>Yes. Core learning features are available for free, with optional upgrades for additional controls.</div></article>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-multi">Can I manage multiple learners?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-multi" hidden>Yes. Families can support multiple learners with separate progress paths.</div></article>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-age">Does this work for different ages?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-age" hidden>Yes. Lessons are structured for varying skill levels, from beginners to advanced typers.</div></article>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-time">How much daily time should we spend?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-time" hidden>Most families see progress with short daily sessions of 10-20 minutes.</div></article>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-device">Does it work on Chromebooks and iPads?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-device" hidden>Yes. Typing.com works in modern browsers across common home and school devices.</div></article>
+          <article class="teacher-faq-item"><button type="button" class="teacher-faq-question" data-faq-trigger aria-expanded="false" data-faq-target="hs-faq-tracking">Can parents track progress?</button><div class="teacher-faq-answer" data-faq-panel="hs-faq-tracking" hidden>Yes. Parent views provide clear speed and accuracy trends over time.</div></article>
+        </div>
+      </section>
+
+      <section class="teacher-bottom-cta" aria-label="Sign up call to action">
+        <div class="teacher-bottom-cta-inner">
+          <h2>Start Homeschool Typing the Easy Way</h2>
+          <p class="teacher-bottom-cta-lead">Set up your family account in minutes and build daily keyboard confidence.</p>
+          <a href="signup/educator/" class="teacher-bottom-cta-button">Create Free Homeschool Account</a>
+          <p class="teacher-bottom-cta-note">Free forever plan available.</p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
