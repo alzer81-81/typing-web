@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body class="ia-page audience-page audience-homeschool">
+<body class="ia-page persona-page persona-homeschool">
   <header>
     <div class="header-inner">
-      <div class="logo"><a href="./"><img src="typing.svg" alt="Typing.com" /></a></div>
-      <nav class="nav-links">
-        <a href="education/">Education</a>
-        <a href="homeschool/">Homeschool</a>
-        <a href="individuals/">Individuals</a>
-        <a href="whats-new/">What's New</a>
+      <div class="logo"><a href="/typing-web/"><img src="typing.svg" alt="Typing.com" /></a></div>
+      <nav class="nav-links" data-persona-anchor-nav data-global-nav="true">
+        <a href="#curriculum">Curriculum</a>
+        <a href="#progress">Progress</a>
+        <a href="#plus">PLUS</a>
+        <a href="#accessibility">Accessibility</a>
         <span class="nav-separator">|</span>
         <a href="login/" data-auth-trigger="login">Log In</a>
         <a href="signup/" data-auth-trigger="signup">Sign Up</a>
@@ -23,58 +23,112 @@
     </div>
   </header>
 
-  <nav class="section-nav" data-section-nav>
-    <div class="section-nav-inner">
-      <a href="#overview">Overview</a>
-      <a href="#learning-path">Learning Path / Curriculum</a>
-      <a href="#progress">Progress Tracking</a>
-      <a href="#accessibility">Accessibility</a>
-      <a href="#plus-edition">PLUS Edition</a>
-    </div>
-  </nav>
-
-  <main class="main audience-main">
-    <section id="overview" class="audience-section audience-hero">
+  <main class="main persona-main">
+    <section id="hero" class="persona-block persona-hero-block">
       <p class="section-pill">Homeschool</p>
-      <h1>Flexible Typing for Home Learning</h1>
-      <p>Run consistent keyboarding routines at home with clear goals and simple oversight.</p>
-      <a class="btn" href="signup/educator/">Start Homeschool Setup</a>
+      <h1>Typing for Flexible Home Learning</h1>
+      <p>Keep daily routines simple with clear lesson flow and visible progress.</p>
+      <a class="btn" href="signup/educator/">Sign Up</a>
     </section>
 
-    <section id="learning-path" class="audience-section">
-      <h2>Learning Path / Curriculum</h2>
-      <p>A practical sequence for home learners: fundamentals, guided repetition, and fluency growth.</p>
-      <div class="audience-cards-3">
-        <article><h3>Foundations</h3><p>Posture, hand placement, and key familiarity.</p></article>
-        <article><h3>Skill Growth</h3><p>Incremental speed and accuracy through targeted practice.</p></article>
-        <article><h3>Application</h3><p>Longer passages and routine sessions to build durable habits.</p></article>
+    <section id="social-proof" class="persona-block"><h2>Social Proofing</h2></section>
+    <section id="students" class="persona-block">
+      <h2>Student Features</h2>
+      <div class="feature-tabs" data-feature-tabs>
+        <div class="feature-tabs-links" role="tablist" aria-label="Homeschool student features">
+          <button type="button" class="feature-tab is-active" data-feature-tab="structured" aria-selected="true">Structured Lessons</button>
+          <button type="button" class="feature-tab" data-feature-tab="feedback" aria-selected="false">Real-Time Feedback</button>
+          <button type="button" class="feature-tab" data-feature-tab="games" aria-selected="false">Games</button>
+          <button type="button" class="feature-tab" data-feature-tab="progress" aria-selected="false">Progress</button>
+          <button type="button" class="feature-tab" data-feature-tab="adaptive" aria-selected="false">Adaptive Practice</button>
+          <button type="button" class="feature-tab" data-feature-tab="accessibility-safe" aria-selected="false">Accessible &amp; Safe</button>
+        </div>
+
+        <article class="feature-tab-panel" data-feature-panel="structured">
+          <div class="feature-tab-copy">
+            <h3>Structured, Step-by-Step Lessons</h3>
+            <p>A research-based curriculum that guides students from beginner to advanced. Builds proper technique, accuracy, and speed in the right order.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-lessons.svg" alt="Structured lessons" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="feedback" hidden>
+          <div class="feature-tab-copy">
+            <h3>Real-Time Feedback</h3>
+            <p>Instant corrections on every keystroke. Students see mistakes immediately and improve faster with guided reinforcement.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-stats.svg" alt="Real-time feedback" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="games" hidden>
+          <div class="feature-tab-copy">
+            <h3>Engaging Practice &amp; Games</h3>
+            <p>Interactive typing games and skill-based challenges. Keeps students motivated while strengthening real keyboarding skills.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-games.svg" alt="Games and challenges" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="progress" hidden>
+          <div class="feature-tab-copy">
+            <h3>Progress &amp; Achievement Tracking</h3>
+            <p>Clear dashboards showing WPM growth and accuracy. Milestones, lesson completion tracking, and achievement rewards.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-track-progress.svg" alt="Progress tracking" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="adaptive" hidden>
+          <div class="feature-tab-copy">
+            <h3>Adaptive Skill Building</h3>
+            <p>Automatically reinforces weak keys and problem areas. Students progress at their own pace with personalized practice.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-ai-lessons.svg" alt="Adaptive skill building" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="accessibility-safe" hidden>
+          <div class="feature-tab-copy">
+            <h3>Accessible &amp; Student-Safe</h3>
+            <p>Built-in accessibility tools and a distraction-free environment. Designed to be safe, inclusive, and focused on learning.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-digital-citizenship.svg" alt="Accessible and student-safe environment" /></div>
+        </article>
       </div>
     </section>
-
-    <section id="progress" class="audience-section">
-      <h2>Progress Tracking</h2>
-      <p>Parents and guardians get a clear view of consistency, completion, speed, and accuracy.</p>
-      <div class="audience-cards-2">
-        <article><h3>Weekly Snapshot</h3><p>See what was completed and where support is needed.</p></article>
-        <article><h3>Long-Term Growth</h3><p>Track trend lines to keep learners on a realistic pace.</p></article>
+    <section id="curriculum" class="persona-block">
+      <h2>Curriculum</h2>
+      <div class="curriculum-points">
+        <article class="curriculum-point">
+          <h3>Grade-Level Curriculum</h3>
+          <p>K-12 structured progression with age-appropriate pacing, clear lesson sequencing, and consistent skill reinforcement across every stage.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Standards Alignment</h3>
+          <p>Supports national and state technology standards with straightforward alignment so families can understand exactly what learners are building.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Assessments &amp; Benchmarks</h3>
+          <p>WPM tracking, accuracy goals, and reporting provide clear visibility into progress so parents can guide next steps with confidence.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Easy Implementation</h3>
+          <p>Assign, monitor, and adjust in minutes with simple setup and flexible routines that fit changing homeschool schedules.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
       </div>
     </section>
-
-    <section id="accessibility" class="audience-section">
-      <h2>Accessibility</h2>
-      <p>Designed with keyboard-first interaction patterns and readable interface hierarchy for varied learner needs.</p>
-    </section>
-
-    <section id="plus-edition" class="audience-section audience-cta">
-      <h2>PLUS Edition for Homeschool</h2>
-      <p>Enable premium practice and deeper insights for independent home learning plans.</p>
-      <a class="btn" href="signup/educator/">Explore Homeschool PLUS</a>
-    </section>
+    <section id="progress" class="persona-block"><h2>Homeschooling Features</h2></section>
+    <section id="plus" class="persona-block"><h2>PLUS Edition</h2></section>
+    <section id="accessibility" class="persona-block accessibility-minimal" data-minimal-accessibility></section>
+    <section id="safety" class="persona-block"><h2>Safety &amp; Privacy</h2></section>
+    <section id="faq" class="persona-block"><h2>FAQs</h2></section>
   </main>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
+        <a href="whats-new/">Whats New</a>
         <a href="press/">In the Press</a>
         <a href="privacy/">Privacy Policy</a>
         <a href="terms/">Terms of Service</a>

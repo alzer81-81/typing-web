@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <base href="/typing-web/" />
-  <title>Typing.com – Education</title>
+  <title>Typing.com – Educator</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body class="ia-page audience-page audience-education">
+<body class="ia-page persona-page persona-educator">
   <header>
     <div class="header-inner">
-      <div class="logo"><a href="./"><img src="typing.svg" alt="Typing.com" /></a></div>
-      <nav class="nav-links">
-        <a href="education/">Education</a>
-        <a href="homeschool/">Homeschool</a>
-        <a href="individuals/">Individuals</a>
-        <a href="whats-new/">What's New</a>
+      <div class="logo"><a href="/typing-web/"><img src="typing.svg" alt="Typing.com" /></a></div>
+      <nav class="nav-links" data-persona-anchor-nav data-global-nav="true">
+        <a href="#curriculum">Curriculum</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#standards">Standards</a>
+        <a href="#plus">PLUS</a>
+        <a href="#accessibility">Accessibility</a>
         <span class="nav-separator">|</span>
         <a href="login/" data-auth-trigger="login">Log In</a>
         <a href="signup/" data-auth-trigger="signup">Sign Up</a>
@@ -23,104 +24,227 @@
     </div>
   </header>
 
-  <nav class="section-nav" data-section-nav>
-    <div class="section-nav-inner">
-      <a href="#overview">Overview</a>
-      <a href="#for-teachers">For Teachers</a>
-      <a href="#for-district">For Admins / District</a>
-      <a href="#curriculum">Curriculum</a>
-      <a href="#reporting">Reporting & Insights</a>
-      <a href="#standards">Standards Alignment</a>
-      <a href="#accessibility">Accessibility</a>
-      <a href="#plus-edition">PLUS Edition</a>
-    </div>
-  </nav>
-
-  <main class="main audience-main">
-    <section id="overview" class="audience-section audience-hero">
-      <p class="section-pill">Education</p>
-      <h1>Keyboarding for Classrooms and District Programs</h1>
-      <p>One platform for implementation, instruction, and measurable growth across schools.</p>
-      <a class="btn" href="signup/educator/">Get Started for Education</a>
+  <main class="main persona-main">
+    <section id="hero" class="persona-block persona-hero-block">
+      <p class="section-pill">Educator</p>
+      <h1>Typing Built for Classrooms and District Programs</h1>
+      <p>Simple implementation, clear instructional flow, and measurable outcomes at scale.</p>
+      <a class="btn" href="signup/educator/">Sign Up</a>
     </section>
 
-    <section id="for-teachers" class="audience-section">
-      <h2>For Teachers</h2>
-      <p>Assign structured practice, keep students engaged, and review growth in one place.</p>
-      <div class="audience-cards-2">
-        <article><h3>Instructional Flow</h3><p>Launch lessons, drills, and checks with consistent routines.</p></article>
-        <article><h3>Classroom Ready</h3><p>Designed for short sessions that fit real class schedules.</p></article>
+    <section id="social-proof" class="persona-block"><h2>Social Proofing</h2></section>
+    <section id="students" class="persona-block">
+      <h2>Student Features</h2>
+      <div class="feature-tabs" data-feature-tabs>
+        <div class="feature-tabs-links" role="tablist" aria-label="Student features">
+          <button type="button" class="feature-tab is-active" data-feature-tab="structured" aria-selected="true">Structured Lessons</button>
+          <button type="button" class="feature-tab" data-feature-tab="feedback" aria-selected="false">Real-Time Feedback</button>
+          <button type="button" class="feature-tab" data-feature-tab="games" aria-selected="false">Games</button>
+          <button type="button" class="feature-tab" data-feature-tab="progress" aria-selected="false">Progress</button>
+          <button type="button" class="feature-tab" data-feature-tab="adaptive" aria-selected="false">Adaptive Practice</button>
+          <button type="button" class="feature-tab" data-feature-tab="accessibility-safe" aria-selected="false">Accessible &amp; Safe</button>
+        </div>
+
+        <article class="feature-tab-panel" data-feature-panel="structured">
+          <div class="feature-tab-copy">
+            <h3>Structured, Step-by-Step Lessons</h3>
+            <p>A research-based curriculum that guides students from beginner to advanced. Builds proper technique, accuracy, and speed in the right order.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-lessons.svg" alt="Structured lessons" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="feedback" hidden>
+          <div class="feature-tab-copy">
+            <h3>Real-Time Feedback</h3>
+            <p>Instant corrections on every keystroke. Students see mistakes immediately and improve faster with guided reinforcement.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-stats.svg" alt="Real-time feedback" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="games" hidden>
+          <div class="feature-tab-copy">
+            <h3>Engaging Practice &amp; Games</h3>
+            <p>Interactive typing games and skill-based challenges. Keeps students motivated while strengthening real keyboarding skills.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-feature-games.svg" alt="Games and challenges" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="progress" hidden>
+          <div class="feature-tab-copy">
+            <h3>Progress &amp; Achievement Tracking</h3>
+            <p>Clear dashboards showing WPM growth and accuracy. Milestones, lesson completion tracking, and achievement rewards.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-track-progress.svg" alt="Progress tracking" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="adaptive" hidden>
+          <div class="feature-tab-copy">
+            <h3>Adaptive Skill Building</h3>
+            <p>Automatically reinforces weak keys and problem areas. Students progress at their own pace with personalized practice.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-ai-lessons.svg" alt="Adaptive skill building" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="accessibility-safe" hidden>
+          <div class="feature-tab-copy">
+            <h3>Accessible &amp; Student-Safe</h3>
+            <p>Built-in accessibility tools and a distraction-free environment. Designed to be safe, inclusive, and focused on learning.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-digital-citizenship.svg" alt="Accessible and student-safe environment" /></div>
+        </article>
       </div>
     </section>
-
-    <section id="for-district" class="audience-section">
-      <h2>For Admins / District</h2>
-      <p>Support district-wide rollout with clear visibility across schools, classes, and usage trends.</p>
-      <div class="audience-cards-2">
-        <article><h3>Program Oversight</h3><p>See adoption, progress, and consistency across campuses.</p></article>
-        <article><h3>Implementation Support</h3><p>Standardize setup and reporting with one shared approach.</p></article>
-      </div>
-    </section>
-
-    <section id="curriculum" class="audience-section">
+    <section id="curriculum" class="persona-block">
       <h2>Curriculum</h2>
-      <p>Our curriculum builds from fundamentals to fluent, confident typing through guided progression.</p>
-      <div class="audience-cards-3">
-        <article><h3>What It Is</h3><p>Structured lessons, reinforcement practice, and skill checks with clear sequencing.</p></article>
-        <article><h3>How Progression Works</h3><p>Students move from key familiarity to speed, accuracy, and writing fluency.</p></article>
-        <article><h3>Outcomes</h3><p>Typing technique, endurance, confidence, and practical productivity skills.</p></article>
+      <div class="curriculum-points">
+        <article class="curriculum-point">
+          <h3>Grade-Level Curriculum</h3>
+          <p>K-12 structured progression with age-appropriate pacing, clear lesson sequencing, and consistent skill reinforcement across every stage.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Standards Alignment</h3>
+          <p>Supports national and state technology standards with straightforward alignment so teams can confidently map instruction to requirements.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Assessments &amp; Benchmarks</h3>
+          <p>WPM tracking, accuracy goals, and reporting give educators practical checkpoints to monitor growth and identify students needing support.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
+        <article class="curriculum-point">
+          <h3>Easy Implementation</h3>
+          <p>Assign, monitor, and adjust in minutes with quick setup workflows that reduce overhead and keep teaching time focused on outcomes.</p>
+          <div class="curriculum-point-media" aria-hidden="true"></div>
+        </article>
       </div>
-      <div class="grade-band-grid">
-        <article><h3>K–2</h3><p>Keyboard familiarity, posture, hand placement, and letter-key confidence.</p></article>
-        <article><h3>3–5</h3><p>Foundational fluency with complete keyboard coverage and habit-building drills.</p></article>
-        <article><h3>6–8</h3><p>Speed + accuracy development and consistent technique across longer passages.</p></article>
-        <article><h3>9–12</h3><p>Advanced fluency, productivity-focused typing, and readiness for coursework/work.</p></article>
+    </section>
+    <section id="teachers" class="persona-block">
+      <h2>Teacher/Admin Features</h2>
+      <div class="feature-tabs" data-feature-tabs>
+        <div class="feature-tabs-links" role="tablist" aria-label="Teacher and admin features">
+          <button type="button" class="feature-tab is-active" data-feature-tab="class-setup" aria-selected="true">Class Setup</button>
+          <button type="button" class="feature-tab" data-feature-tab="assignment-control" aria-selected="false">Assignments</button>
+          <button type="button" class="feature-tab" data-feature-tab="monitoring" aria-selected="false">Monitoring</button>
+          <button type="button" class="feature-tab" data-feature-tab="reporting" aria-selected="false">Reporting</button>
+          <button type="button" class="feature-tab" data-feature-tab="management-tools" aria-selected="false">Management</button>
+          <button type="button" class="feature-tab" data-feature-tab="district-oversight" aria-selected="false">District Oversight</button>
+        </div>
+
+        <article class="feature-tab-panel" data-feature-panel="class-setup">
+          <div class="feature-tab-copy">
+            <h3>Easy Class Setup</h3>
+            <p>Create classes and add students in minutes. Import via Google Classroom, Clever, or manual roster upload.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tool-manage-classes.svg" alt="Easy class setup" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="assignment-control" hidden>
+          <div class="feature-tab-copy">
+            <h3>Assignment &amp; Lesson Control</h3>
+            <p>Assign full units, specific lessons, or custom practice. Control pacing and ensure students stay on track.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tool-assign-lessons.svg" alt="Assignment and lesson control" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="monitoring" hidden>
+          <div class="feature-tab-copy">
+            <h3>Real-Time Progress Monitoring</h3>
+            <p>Live dashboards show WPM, accuracy, and completion rates. Quickly identify students who need extra support.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tab-track-progress.svg" alt="Real-time progress monitoring" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="reporting" hidden>
+          <div class="feature-tab-copy">
+            <h3>Automated Grading &amp; Reporting</h3>
+            <p>Instant grading on lessons and timed tests. Exportable reports for grading periods and parent communication.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tool-reporting.svg" alt="Automated grading and reporting" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="management-tools" hidden>
+          <div class="feature-tab-copy">
+            <h3>Classroom Management Tools</h3>
+            <p>Track participation and engagement. Reset progress, adjust settings, and manage accommodations easily.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tool-differentiate.svg" alt="Classroom management tools" /></div>
+        </article>
+
+        <article class="feature-tab-panel" data-feature-panel="district-oversight" hidden>
+          <div class="feature-tab-copy">
+            <h3>School &amp; District-Level Oversight</h3>
+            <p>Admin dashboards for multi-class or multi-school visibility. Monitor usage, growth trends, and implementation success.</p>
+          </div>
+          <div class="feature-tab-media"><img src="assets/teacher-tool-integrations.svg" alt="School and district oversight dashboards" /></div>
+        </article>
       </div>
     </section>
+    <section id="integrations" class="persona-block integrations-setup-section" data-section="integrations-setup">
+      <p class="integrations-eyebrow">Integrations &amp; Setup</p>
+      <h2>Set Up in Minutes. No IT Headaches.</h2>
+      <p class="integrations-subtext">Typing.com works with the platforms your school already uses. Enable single sign-on and roster syncing to get classes running fast&mdash;without manual account creation.</p>
 
-    <section id="reporting" class="audience-section">
-      <h2>Reporting & Insights</h2>
-      <p>Use clear progress data to support instruction, intervention, and program decisions.</p>
-      <div class="audience-cards-3">
-        <article><h3>Class-Level View</h3><p>Monitor completion, speed, and accuracy by student and assignment.</p></article>
-        <article><h3>School/District View</h3><p>Track usage and outcomes across teachers and campuses.</p></article>
-        <article><h3>Actionable Signals</h3><p>Spot who needs support and where targeted practice can help most.</p></article>
+      <div class="integrations-layout">
+        <div class="integrations-logos">
+          <p class="integrations-logo-label">Supports SSO + roster syncing with:</p>
+          <div class="integrations-logo-grid">
+            <a class="integration-tile" href="#" aria-label="Google integration">
+              <img src="images/integrations/google.svg" alt="Google" />
+              <span>Google</span>
+            </a>
+            <a class="integration-tile" href="#" aria-label="Google Classroom integration">
+              <img src="images/integrations/google-classroom.svg" alt="Google Classroom" />
+              <span>Google Classroom</span>
+            </a>
+            <a class="integration-tile" href="#" aria-label="Clever integration">
+              <img src="images/integrations/clever.svg" alt="Clever" />
+              <span>Clever</span>
+            </a>
+            <a class="integration-tile" href="#" aria-label="ClassLink integration">
+              <img src="images/integrations/classlink.svg" alt="ClassLink" />
+              <span>ClassLink</span>
+            </a>
+            <a class="integration-tile" href="#" aria-label="Microsoft Education integration">
+              <img src="images/integrations/microsoft-education.svg" alt="Microsoft Education" />
+              <span>Microsoft Education</span>
+            </a>
+            <a class="integration-tile" href="#" aria-label="Schoology integration">
+              <img src="images/integrations/schoology.svg" alt="Schoology" />
+              <span>Schoology</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="integrations-highlights">
+          <h3>Setup highlights</h3>
+          <ul>
+            <li>Single sign-on with Google or Microsoft accounts</li>
+            <li>Automatic roster syncing for classes and students</li>
+            <li>No manual account creation or spreadsheets</li>
+            <li>Works on Chromebooks, laptops, and desktops</li>
+            <li>Secure, privacy-first authentication and data handling</li>
+            <li>District-ready rollout with centralized oversight</li>
+          </ul>
+        </div>
+
+        <div class="integrations-actions">
+          <a class="btn" href="signup/educator/" data-cta="view-setup-options">View setup options</a>
+          <a class="integrations-secondary-link" href="support/">Talk to our team</a>
+        </div>
       </div>
     </section>
-
-    <section id="standards" class="audience-section">
-      <h2>Standards Alignment</h2>
-      <p>Typing.com supports education standards with region-specific references.</p>
-      <div class="state-selector-box">
-        <label for="state-selector">View standards by state</label>
-        <select id="state-selector" aria-label="State selector">
-          <option selected>Select a state</option>
-          <option>California</option>
-          <option>Texas</option>
-          <option>Florida</option>
-          <option>New York</option>
-          <option>Illinois</option>
-        </select>
-      </div>
-      <!-- Naming note: avoided "Typing Types" style labels to reduce overlap with competitor naming. -->
-    </section>
-
-    <section id="accessibility" class="audience-section">
-      <h2>Accessibility</h2>
-      <p>Built with inclusive interaction patterns including keyboard support, contrast-conscious UI, and screen reader-friendly structure.</p>
-      <p><a href="support/">Request additional accessibility details</a></p>
-    </section>
-
-    <section id="plus-edition" class="audience-section audience-cta">
-      <h2>PLUS Edition for Education</h2>
-      <p>Unlock premium controls and reporting options for broader program needs.</p>
-      <a class="btn" href="signup/educator/">Explore Education PLUS</a>
-    </section>
+    <section id="standards" class="persona-block"><h2>Standards</h2></section>
+    <section id="plus" class="persona-block"><h2>PLUS Edition</h2></section>
+    <section id="accessibility" class="persona-block accessibility-minimal" data-minimal-accessibility></section>
+    <section id="safety" class="persona-block"><h2>Safety &amp; Privacy</h2></section>
+    <section id="faq" class="persona-block"><h2>FAQs</h2></section>
   </main>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
+        <a href="whats-new/">Whats New</a>
         <a href="press/">In the Press</a>
         <a href="privacy/">Privacy Policy</a>
         <a href="terms/">Terms of Service</a>

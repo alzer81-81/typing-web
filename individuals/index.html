@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <base href="/typing-web/" />
-  <title>Typing.com – Individuals</title>
+  <title>Typing.com – Individual</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body class="ia-page audience-page audience-individuals">
+<body class="ia-page persona-page persona-individual">
   <header>
     <div class="header-inner">
-      <div class="logo"><a href="./"><img src="typing.svg" alt="Typing.com" /></a></div>
-      <nav class="nav-links">
-        <a href="education/">Education</a>
-        <a href="homeschool/">Homeschool</a>
-        <a href="individuals/">Individuals</a>
-        <a href="whats-new/">What's New</a>
+      <div class="logo"><a href="/typing-web/"><img src="typing.svg" alt="Typing.com" /></a></div>
+      <nav class="nav-links" data-persona-anchor-nav data-global-nav="true">
+        <a href="#lessons">Lessons</a>
+        <a href="#games">Games</a>
+        <a href="#progress">Progress</a>
+        <a href="#plus">PLUS</a>
         <span class="nav-separator">|</span>
         <a href="login/" data-auth-trigger="login">Log In</a>
         <a href="signup/" data-auth-trigger="signup">Sign Up</a>
@@ -23,58 +23,29 @@
     </div>
   </header>
 
-  <nav class="section-nav" data-section-nav>
-    <div class="section-nav-inner">
-      <a href="#overview">Overview</a>
-      <a href="#skills">Skill Building</a>
-      <a href="#achievements">Achievements / Certificates</a>
-      <a href="#accessibility">Accessibility</a>
-      <a href="#plus-edition">PLUS Edition</a>
-    </div>
-  </nav>
-
-  <main class="main audience-main">
-    <section id="overview" class="audience-section audience-hero">
-      <p class="section-pill">Individuals</p>
-      <h1>Personal Typing Practice That Fits Your Pace</h1>
-      <p>Build speed, accuracy, and confidence with guided lessons and clear progress signals.</p>
-      <a class="btn" href="signup/student/">Start as an Individual</a>
+  <main class="main persona-main">
+    <section id="hero" class="persona-block persona-hero-block">
+      <p class="section-pill">Individual</p>
+      <h1>Typing Practice That Moves at Your Pace</h1>
+      <p>Focus on faster, more accurate typing with a clear personal path.</p>
+      <a class="btn" href="signup/student/">Sign Up</a>
     </section>
 
-    <section id="skills" class="audience-section">
-      <h2>Skill Building</h2>
-      <p>Use a mix of guided lessons, drills, and tests to build consistent keyboard fluency.</p>
-      <div class="audience-cards-3">
-        <article><h3>Practice</h3><p>Target weak keys and reinforce good typing habits.</p></article>
-        <article><h3>Lessons</h3><p>Move through structured sequences with increasing challenge.</p></article>
-        <article><h3>Tests</h3><p>Check speed and accuracy regularly to measure improvement.</p></article>
-      </div>
-    </section>
-
-    <section id="achievements" class="audience-section">
-      <h2>Achievements / Certificates</h2>
-      <p>Milestones and completion markers help learners stay motivated and see progress.</p>
-      <div class="audience-cards-2">
-        <article><h3>Milestones</h3><p>Track progress by goals, practice streaks, and completion checkpoints.</p></article>
-        <article><h3>Certificates</h3><p>Capture proficiency progress with shareable completion indicators.</p></article>
-      </div>
-    </section>
-
-    <section id="accessibility" class="audience-section">
-      <h2>Accessibility</h2>
-      <p>Supports keyboard navigation patterns, readable UI, and assistive-technology-friendly structure.</p>
-    </section>
-
-    <section id="plus-edition" class="audience-section audience-cta">
-      <h2>PLUS Edition for Individuals</h2>
-      <p>Get ad-free focus, advanced progress views, and enhanced personal practice controls.</p>
-      <a class="btn" href="signup/student/">Explore Personal PLUS</a>
-    </section>
+    <section id="social-proof" class="persona-block"><h2>Social Proofing</h2></section>
+    <section id="lessons" class="persona-block"><h2>Typing Lessons</h2></section>
+    <section id="games" class="persona-block"><h2>Games</h2></section>
+    <section id="progress" class="persona-block"><h2>Progress &amp; Achievements</h2></section>
+    <section id="curriculum" class="persona-block"><h2>Curriculum</h2></section>
+    <section id="plus" class="persona-block"><h2>Personal PLUS</h2></section>
+    <section id="accessibility" class="persona-block accessibility-minimal" data-minimal-accessibility></section>
+    <section id="safety" class="persona-block"><h2>Safety &amp; Privacy</h2></section>
+    <section id="faq" class="persona-block"><h2>FAQ</h2></section>
   </main>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
+        <a href="whats-new/">Whats New</a>
         <a href="press/">In the Press</a>
         <a href="privacy/">Privacy Policy</a>
         <a href="terms/">Terms of Service</a>

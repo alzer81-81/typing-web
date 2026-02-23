@@ -5,67 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!pathname) pathname = "/";
   if (pathname.charAt(0) !== "/") pathname = "/" + pathname;
 
-  normalizeGlobalNavigation(pathname);
   initMobileNav();
-  setActiveHeaderLink(pathname);
-  initAudienceSectionNav();
+  initPersonaAnchorNav();
+  initFeatureTabs();
+  initAccessibilitySections();
   initAuthModal(pathname);
   ensureFooterLanguageSelector();
 });
-
-function normalizeGlobalNavigation(pathname) {
-  var navs = document.querySelectorAll("header .nav-links");
-  if (!navs.length) return;
-
-  var baseLinks = [
-    { href: "education/", label: "Education" },
-    { href: "homeschool/", label: "Homeschool" },
-    { href: "individuals/", label: "Individuals" },
-    { href: "whats-new/", label: "What's New" }
-  ];
-
-  navs.forEach(function (nav) {
-    if (nav.getAttribute("data-global-nav") === "true") return;
-
-    var html = baseLinks.map(function (item) {
-      return "<a href=\"" + item.href + "\">" + item.label + "</a>";
-    }).join("");
-
-    html +=
-      "<span class=\"nav-separator\">|</span>" +
-      "<a href=\"login/\" data-auth-trigger=\"login\">Log In</a>" +
-      "<a href=\"signup/\" data-auth-trigger=\"signup\">Sign Up</a>";
-
-    nav.innerHTML = html;
-    nav.setAttribute("data-global-nav", "true");
-  });
-
-  var homeCards = document.querySelectorAll(".home-persona-card");
-  if (homeCards.length === 4) {
-    homeCards[0].setAttribute("href", "education/");
-    homeCards[0].querySelector("h2").textContent = "Education";
-    homeCards[0].querySelector("p").textContent = "For teachers, schools, and district teams.";
-    homeCards[0].querySelector("strong").textContent = "Explore Education";
-
-    homeCards[1].setAttribute("href", "homeschool/");
-    homeCards[1].querySelector("h2").textContent = "Homeschool";
-    homeCards[1].querySelector("p").textContent = "Flexible at-home keyboarding and family progress tracking.";
-    homeCards[1].querySelector("strong").textContent = "Explore Homeschool";
-
-    homeCards[2].setAttribute("href", "individuals/");
-    homeCards[2].querySelector("h2").textContent = "Individuals";
-    homeCards[2].querySelector("p").textContent = "Self-paced typing practice for independent learners.";
-    homeCards[2].querySelector("strong").textContent = "Explore Individuals";
-
-    homeCards[3].setAttribute("href", "whats-new/");
-    homeCards[3].querySelector("h2").textContent = "What's New";
-    homeCards[3].querySelector("p").textContent = "Recent updates, releases, and product improvements.";
-    homeCards[3].querySelector("strong").textContent = "See Updates";
-  }
-
-  var homeSelect = document.querySelector(".home-select");
-  if (homeSelect) homeSelect.textContent = "Choose your audience to continue";
-}
 
 function initMobileNav() {
   var headerNavs = document.querySelectorAll("header .header-inner .nav-links");
@@ -107,6 +53,7 @@ function setActiveHeaderLink(pathname) {
   navLinks.forEach(function (link) {
     var href = link.getAttribute("href");
     if (!href || href.indexOf("http") === 0 || href.indexOf("#") === 0) return;
+
     var linkPathname = new URL(href, document.baseURI).pathname;
     var basePath = new URL(document.baseURI).pathname.replace(/\/$/, "");
     linkPathname = linkPathname.indexOf(basePath) === 0 ? linkPathname.slice(basePath.length) : linkPathname;
@@ -127,52 +74,92 @@ function setActiveHeaderLink(pathname) {
   if (bestMatch) bestMatch.link.setAttribute("aria-current", "page");
 }
 
-function initAudienceSectionNav() {
-  var navs = document.querySelectorAll("[data-section-nav]");
-  if (!navs.length) return;
+function initPersonaAnchorNav() {
+  var nav = document.querySelector("[data-persona-anchor-nav]");
+  if (!nav) return;
 
-  navs.forEach(function (nav) {
-    var links = nav.querySelectorAll("a[href^='#']");
-    if (!links.length) return;
+  var links = nav.querySelectorAll("a[href^='#']");
+  if (!links.length) return;
 
-    var sections = Array.prototype.slice.call(links)
-      .map(function (link) {
-        return document.getElementById((link.getAttribute("href") || "").slice(1));
-      })
-      .filter(Boolean);
+  var sections = Array.prototype.slice.call(links)
+    .map(function (link) {
+      return document.getElementById((link.getAttribute("href") || "").slice(1));
+    })
+    .filter(Boolean);
 
-    if (!sections.length) return;
+  if (!sections.length) return;
 
-    links.forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        var id = (link.getAttribute("href") || "").slice(1);
-        var target = id ? document.getElementById(id) : null;
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+  links.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var id = (link.getAttribute("href") || "").slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  // Keep smooth in-page navigation, but do not set active styles on top nav links.
+}
+
+function initFeatureTabs() {
+  var roots = document.querySelectorAll("[data-feature-tabs]");
+  if (!roots.length) return;
+
+  roots.forEach(function (root) {
+    var tabs = root.querySelectorAll("[data-feature-tab]");
+    var panels = root.querySelectorAll("[data-feature-panel]");
+    if (!tabs.length || !panels.length) return;
+
+    function activate(key) {
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute("data-feature-tab") === key;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      panels.forEach(function (panel) {
+        var active = panel.getAttribute("data-feature-panel") === key;
+        panel.hidden = !active;
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        activate(tab.getAttribute("data-feature-tab"));
       });
     });
 
-    function setActive(id) {
-      links.forEach(function (link) {
-        var isActive = link.getAttribute("href") === "#" + id;
-        link.classList.toggle("is-active", isActive);
-        if (isActive) link.setAttribute("aria-current", "true");
-        else link.removeAttribute("aria-current");
-      });
-    }
+    var initial = root.querySelector("[data-feature-tab].is-active");
+    activate(initial ? initial.getAttribute("data-feature-tab") : tabs[0].getAttribute("data-feature-tab"));
+  });
+}
 
-    function onScroll() {
-      var selected = sections[0].id;
-      var scrollPos = window.scrollY + 200;
-      sections.forEach(function (section) {
-        if (section.offsetTop <= scrollPos) selected = section.id;
-      });
-      setActive(selected);
-    }
+function initAccessibilitySections() {
+  var sections = document.querySelectorAll("[data-minimal-accessibility]");
+  if (!sections.length) return;
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+  var markup =
+    "<div class=\"accessibility-minimal-copy\">" +
+      "<p class=\"accessibility-minimal-eyebrow\">Accessibility</p>" +
+      "<h2>Built for Every Learner</h2>" +
+      "<p class=\"accessibility-minimal-subtext\">Inclusive design that supports diverse learning needs and assistive technologies.</p>" +
+    "</div>" +
+    "<div class=\"accessibility-minimal-list-wrap\">" +
+      "<ul class=\"accessibility-minimal-list\">" +
+        "<li>Screen reader compatible</li>" +
+        "<li>Full keyboard navigation</li>" +
+        "<li>High-contrast &amp; zoom support</li>" +
+        "<li>WCAG 2.2 AA aligned</li>" +
+      "</ul>" +
+    "</div>" +
+    "<div class=\"accessibility-minimal-actions\">" +
+      "<a class=\"btn\" href=\"accessibility/\" aria-label=\"View Accessibility Details\">View Accessibility Details</a>" +
+    "</div>";
+
+  sections.forEach(function (section) {
+    section.setAttribute("data-section", "accessibility");
+    section.innerHTML = markup;
   });
 }
 
