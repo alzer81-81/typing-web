@@ -3,66 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <base href="/typing-web/" />
-  <title>Typing.com – Hub</title>
+  <title>Typing.com – Audience Hub</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/main.js" defer></script>
 </head>
-<body class="homepage">
+<body class="homepage ia-page">
   <header>
     <div class="header-inner homepage-header">
       <div class="logo">
         <a href="./"><img src="typing.svg" alt="Typing.com" /></a>
       </div>
       <nav class="nav-links">
-        <a href="login/" data-auth-trigger="login" class="home-nav-btn home-nav-btn-secondary">Log In</a>
-        <a href="signup/" data-auth-trigger="signup" class="home-nav-btn">Sign Up</a>
+        <a href="education/">Education</a>
+        <a href="homeschool/">Homeschool</a>
+        <a href="individuals/">Individuals</a>
+        <a href="whats-new/">What's New</a>
+        <span class="nav-separator">|</span>
+        <a href="login/" data-auth-trigger="login">Log In</a>
+        <a href="signup/" data-auth-trigger="signup">Sign Up</a>
       </nav>
     </div>
   </header>
 
-  <main class="main homepage-main">
-    <div class="home-top-band">
-      <section class="home-hero">
-        <h1>The Typing Platform Built for Schools and Learners</h1>
-        <p>Interactive lessons, real-time progress tracking, and tools for teachers, individuals, and families.</p>
-      </section>
-
-      <section class="home-persona-band">
-        <p class="home-select">Choose your role to continue</p>
-        <div class="home-persona-grid">
-          <a class="home-persona-card" href="admin/">
-            <span class="home-emoji" aria-hidden="true">🏫</span>
-            <h2>I'm an Admin</h2>
-            <p>District oversight, rostering integrations, school-wide reporting.</p>
-            <strong>Explore Admin Tools</strong>
-          </a>
-          <a class="home-persona-card" href="teacher/">
-            <span class="home-emoji" aria-hidden="true">👩‍🏫</span>
-            <h2>I'm a Teacher</h2>
-            <p>Classroom management, assignments, and progress tracking.</p>
-            <strong>Explore Teacher Tools</strong>
-          </a>
-          <a class="home-persona-card" href="homeschool/">
-            <span class="home-emoji" aria-hidden="true">🏡</span>
-            <h2>I'm Homeschooling</h2>
-            <p>Parents and co-ops running learning at home.</p>
-            <strong>Explore Homeschooling Tools</strong>
-          </a>
-          <a class="home-persona-card" href="students/">
-            <span class="home-emoji" aria-hidden="true">👤</span>
-            <h2>I'm an Individual</h2>
-            <p>Interactive lessons, games, and progress tracking.</p>
-            <strong>Start Learning</strong>
-          </a>
-        </div>
-      </section>
-    </div>
+  <main class="main homepage-main ia-home-main">
+    <section class="ia-home-hero">
+      <p class="section-pill">Typing.com</p>
+      <h1>The Typing Platform for Classrooms, Families, and Independent Learners</h1>
+      <p>Interactive lessons, real-time progress tracking, and practical tools tailored for each audience.</p>
+      <p class="home-select">Choose your audience to continue</p>
+      <div class="home-persona-grid ia-home-grid">
+        <a class="home-persona-card" href="education/">
+          <span class="home-emoji" aria-hidden="true">🏫</span>
+          <h2>Education</h2>
+          <p>For teachers, school leaders, and district teams.</p>
+          <strong>Explore Education</strong>
+        </a>
+        <a class="home-persona-card" href="homeschool/">
+          <span class="home-emoji" aria-hidden="true">🏡</span>
+          <h2>Homeschool</h2>
+          <p>Flexible at-home typing paths and parent visibility.</p>
+          <strong>Explore Homeschool</strong>
+        </a>
+        <a class="home-persona-card" href="individuals/">
+          <span class="home-emoji" aria-hidden="true">👤</span>
+          <h2>Individuals</h2>
+          <p>Self-paced practice for one-off typers and personal goals.</p>
+          <strong>Explore Individuals</strong>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="homepage-footer">
     <div class="footer-inner homepage-footer-inner">
       <div class="footer-links">
-        <a href="whats-new/">What's New</a>
         <a href="press/">In the Press</a>
         <a href="privacy/">Privacy Policy</a>
         <a href="terms/">Terms of Service</a>
@@ -71,21 +65,5 @@
       </div>
     </div>
   </footer>
-
-  <div class="modal-backdrop" id="auth-modal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
-      <div class="modal-header">
-        <h2 class="modal-title" id="auth-modal-title">Log In</h2>
-        <button class="modal-close" type="button" aria-label="Close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-description">Choose whether you're logging in as an educator or an individual.</p>
-        <div class="modal-actions">
-          <a href="login/educator/" class="btn" data-role="educator">Educator</a>
-          <a href="login/student/" class="btn btn-secondary" data-role="student">Individual</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 </html>

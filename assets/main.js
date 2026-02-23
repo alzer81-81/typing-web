@@ -4,55 +4,74 @@ document.addEventListener("DOMContentLoaded", function () {
   var pathname = rawPathname.indexOf(basePathname) === 0 ? rawPathname.slice(basePathname.length) : rawPathname;
   if (!pathname) pathname = "/";
   if (pathname.charAt(0) !== "/") pathname = "/" + pathname;
-  var navLinks = document.querySelectorAll("header .nav-links a[href]");
+
+  normalizeGlobalNavigation(pathname);
+  initMobileNav();
+  setActiveHeaderLink(pathname);
+  initAudienceSectionNav();
+  initAuthModal(pathname);
+  ensureFooterLanguageSelector();
+});
+
+function normalizeGlobalNavigation(pathname) {
+  var navs = document.querySelectorAll("header .nav-links");
+  if (!navs.length) return;
+
+  var baseLinks = [
+    { href: "education/", label: "Education" },
+    { href: "homeschool/", label: "Homeschool" },
+    { href: "individuals/", label: "Individuals" },
+    { href: "whats-new/", label: "What's New" }
+  ];
+
+  navs.forEach(function (nav) {
+    if (nav.getAttribute("data-global-nav") === "true") return;
+
+    var html = baseLinks.map(function (item) {
+      return "<a href=\"" + item.href + "\">" + item.label + "</a>";
+    }).join("");
+
+    html +=
+      "<span class=\"nav-separator\">|</span>" +
+      "<a href=\"login/\" data-auth-trigger=\"login\">Log In</a>" +
+      "<a href=\"signup/\" data-auth-trigger=\"signup\">Sign Up</a>";
+
+    nav.innerHTML = html;
+    nav.setAttribute("data-global-nav", "true");
+  });
+
+  var homeCards = document.querySelectorAll(".home-persona-card");
+  if (homeCards.length === 4) {
+    homeCards[0].setAttribute("href", "education/");
+    homeCards[0].querySelector("h2").textContent = "Education";
+    homeCards[0].querySelector("p").textContent = "For teachers, schools, and district teams.";
+    homeCards[0].querySelector("strong").textContent = "Explore Education";
+
+    homeCards[1].setAttribute("href", "homeschool/");
+    homeCards[1].querySelector("h2").textContent = "Homeschool";
+    homeCards[1].querySelector("p").textContent = "Flexible at-home keyboarding and family progress tracking.";
+    homeCards[1].querySelector("strong").textContent = "Explore Homeschool";
+
+    homeCards[2].setAttribute("href", "individuals/");
+    homeCards[2].querySelector("h2").textContent = "Individuals";
+    homeCards[2].querySelector("p").textContent = "Self-paced typing practice for independent learners.";
+    homeCards[2].querySelector("strong").textContent = "Explore Individuals";
+
+    homeCards[3].setAttribute("href", "whats-new/");
+    homeCards[3].querySelector("h2").textContent = "What's New";
+    homeCards[3].querySelector("p").textContent = "Recent updates, releases, and product improvements.";
+    homeCards[3].querySelector("strong").textContent = "See Updates";
+  }
+
+  var homeSelect = document.querySelector(".home-select");
+  if (homeSelect) homeSelect.textContent = "Choose your audience to continue";
+}
+
+function initMobileNav() {
   var headerNavs = document.querySelectorAll("header .header-inner .nav-links");
-  var personaRouteMatch = pathname.match(/^\/(admin|teacher|homeschool|students)(?:\/|$)/);
-  var roleLabels = {
-    admin: "Role: Admin",
-    teacher: "Role: Teacher",
-    homeschool: "Role: Homeschool",
-    students: "Role: Individual"
-  };
-  var roleEmoji = {
-    admin: "🏫",
-    teacher: "👩‍🏫",
-    homeschool: "🏡",
-    students: "🎓"
-  };
-  var roleDescriptions = {
-    admin: "District-wide setup and reporting.",
-    teacher: "Class assignments and progress tracking.",
-    homeschool: "At-home learning plans and routines.",
-    students: "Personal practice, games, and goals."
-  };
-  var rolePaths = {
-    admin: "admin/",
-    teacher: "teacher/",
-    homeschool: "homeschool/",
-    students: "students/"
-  };
-  var storedRole = null;
-  try {
-    storedRole = window.localStorage.getItem("selectedRole");
-  } catch (err) {}
-  var urlRole = new URL(window.location.href).searchParams.get("role");
-  var normalizedUrlRole = urlRole && roleLabels[urlRole] ? urlRole : null;
-  var contextRole = personaRouteMatch ? personaRouteMatch[1] : (normalizedUrlRole || (storedRole && roleLabels[storedRole] ? storedRole : null));
-
-  if (contextRole) {
-    try {
-      window.localStorage.setItem("selectedRole", contextRole);
-    } catch (err) {}
-  }
-
-  if (personaRouteMatch) {
-    document.body.classList.add("persona-" + personaRouteMatch[1]);
-    document.body.classList.add("persona-landing");
-  }
-
   headerNavs.forEach(function (nav, index) {
     var parent = nav.parentElement;
-    if (!parent) return;
+    if (!parent || parent.querySelector(".nav-toggle")) return;
 
     var navId = nav.id || "site-nav-" + index;
     nav.id = navId;
@@ -79,64 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+}
 
-  var dropdownToggle = document.querySelector(".dropdown .dropdown-toggle");
-  if (dropdownToggle) {
-    var roleKey = contextRole;
-    if (!roleKey) {
-      var roleLink = document.querySelector(".dropdown-menu a[aria-current=\"page\"]");
-      if (roleLink) {
-        var href = roleLink.getAttribute("href") || "";
-        var rolePathname = new URL(href, document.baseURI).pathname;
-        rolePathname = rolePathname.indexOf(basePathname) === 0 ? rolePathname.slice(basePathname.length) : rolePathname;
-        if (rolePathname.charAt(0) !== "/") rolePathname = "/" + rolePathname;
-        var roleMatch = rolePathname.match(/^\/(admin|teacher|homeschool|students)\/?$/);
-        if (roleMatch) roleKey = roleMatch[1];
-      }
-    }
-    if (roleKey && roleLabels[roleKey]) {
-      dropdownToggle.textContent = roleLabels[roleKey];
-      dropdownToggle.setAttribute("href", rolePaths[roleKey]);
-    }
-  }
-
-  document.querySelectorAll(".dropdown-menu a[href]").forEach(function (link) {
-    if (link.getAttribute("data-role-enhanced") === "true") return;
-    var href = link.getAttribute("href") || "";
-    var localPathname = new URL(href, document.baseURI).pathname;
-    localPathname = localPathname.indexOf(basePathname) === 0 ? localPathname.slice(basePathname.length) : localPathname;
-    if (localPathname.charAt(0) !== "/") localPathname = "/" + localPathname;
-    var match = localPathname.match(/^\/(admin|teacher|homeschool|students)\/?$/);
-    if (!match) return;
-
-    var key = match[1];
-    if (!roleEmoji[key]) return;
-    var roleName = link.textContent.trim();
-    var description = roleDescriptions[key] || "";
-    link.classList.add("role-item-link");
-    link.innerHTML =
-      "<span class=\"role-item-title\">" + roleEmoji[key] + " " + roleName + "</span>" +
-      "<span class=\"role-item-subtext\">" + description + "</span>";
-    link.setAttribute("data-role-enhanced", "true");
-
-    if (contextRole && key === contextRole) {
-      link.classList.add("role-item-active");
-    }
-
-    link.addEventListener("click", function () {
-      try {
-        window.localStorage.setItem("selectedRole", key);
-      } catch (err) {}
-    });
-  });
-
+function setActiveHeaderLink(pathname) {
+  var navLinks = document.querySelectorAll("header .nav-links a[href]");
   var bestMatch = null;
+
   navLinks.forEach(function (link) {
     var href = link.getAttribute("href");
     if (!href || href.indexOf("http") === 0 || href.indexOf("#") === 0) return;
-
     var linkPathname = new URL(href, document.baseURI).pathname;
-    linkPathname = linkPathname.indexOf(basePathname) === 0 ? linkPathname.slice(basePathname.length) : linkPathname;
+    var basePath = new URL(document.baseURI).pathname.replace(/\/$/, "");
+    linkPathname = linkPathname.indexOf(basePath) === 0 ? linkPathname.slice(basePath.length) : linkPathname;
     if (!linkPathname) linkPathname = "/";
     if (linkPathname.charAt(0) !== "/") linkPathname = "/" + linkPathname;
     if (linkPathname === "/login/" || linkPathname === "/signup/") return;
@@ -151,27 +124,69 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  if (bestMatch) {
-    bestMatch.link.setAttribute("aria-current", "page");
-  }
+  if (bestMatch) bestMatch.link.setAttribute("aria-current", "page");
+}
 
-  var personaMatch = pathname.match(/^\/(admin|teacher|homeschool|students)\/?$/);
-  if (personaMatch) {
-    hydratePersonaPage(personaMatch[1]);
-  }
+function initAudienceSectionNav() {
+  var navs = document.querySelectorAll("[data-section-nav]");
+  if (!navs.length) return;
 
-  var topicMatch = pathname.match(/^\/(curriculum|standards|accessibility|plus)\/?$/);
-  if (topicMatch) {
-    if (topicMatch[1] !== "curriculum" && topicMatch[1] !== "accessibility") {
-      document.body.classList.add("shared-topic-page");
-      document.body.classList.add("topic-" + topicMatch[1]);
-      hydrateSharedTopicPage(topicMatch[1]);
+  navs.forEach(function (nav) {
+    var links = nav.querySelectorAll("a[href^='#']");
+    if (!links.length) return;
+
+    var sections = Array.prototype.slice.call(links)
+      .map(function (link) {
+        return document.getElementById((link.getAttribute("href") || "").slice(1));
+      })
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        var id = (link.getAttribute("href") || "").slice(1);
+        var target = id ? document.getElementById(id) : null;
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        var isActive = link.getAttribute("href") === "#" + id;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
     }
+
+    function onScroll() {
+      var selected = sections[0].id;
+      var scrollPos = window.scrollY + 200;
+      sections.forEach(function (section) {
+        if (section.offsetTop <= scrollPos) selected = section.id;
+      });
+      setActive(selected);
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  });
+}
+
+function initAuthModal(pathname) {
+  var modal = document.getElementById("auth-modal");
+  if (!modal) {
+    modal = createAuthModal();
+    document.body.appendChild(modal);
   }
 
   document.querySelectorAll("header .nav-links a[href]").forEach(function (link) {
     var linkPathname = new URL(link.getAttribute("href"), document.baseURI).pathname;
-    linkPathname = linkPathname.indexOf(basePathname) === 0 ? linkPathname.slice(basePathname.length) : linkPathname;
+    var basePath = new URL(document.baseURI).pathname.replace(/\/$/, "");
+    linkPathname = linkPathname.indexOf(basePath) === 0 ? linkPathname.slice(basePath.length) : linkPathname;
     if (!linkPathname) linkPathname = "/";
     if (linkPathname.charAt(0) !== "/") linkPathname = "/" + linkPathname;
 
@@ -185,12 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  var modal = document.getElementById("auth-modal");
-  if (!modal) {
-    modal = createAuthModal();
-    document.body.appendChild(modal);
-  }
-
   var titleEl = modal.querySelector(".modal-title");
   var descriptionEl = modal.querySelector(".modal-description");
   var actionsEl = modal.querySelector(".modal-actions");
@@ -198,69 +207,29 @@ document.addEventListener("DOMContentLoaded", function () {
   var targets = {
     login: {
       educator: "login/educator/",
-      student: "login/student/",
+      individual: "login/student/",
       title: "Log In",
       description: "Choose whether you're logging in as an educator or an individual."
     },
     signup: {
       educator: "signup/educator/",
-      student: "signup/student/",
+      individual: "signup/student/",
       title: "Sign Up",
       description: "Choose whether you're signing up as an educator or an individual."
     }
   };
 
-  function resolveAudience() {
-    if (contextRole === "students") return "student";
-    if (contextRole === "admin" || contextRole === "teacher" || contextRole === "homeschool") return "educator";
-    return "both";
-  }
-
-  function renderAuthActions(mode) {
-    if (!actionsEl) return;
-    var cfg = mode === "signup" ? targets.signup : targets.login;
-    var audience = resolveAudience();
-    var isHomepage = document.body.classList.contains("homepage");
-
-    actionsEl.classList.remove("single-option");
-    actionsEl.classList.remove("modal-actions-role-grid");
-
-    if (isHomepage) {
-      actionsEl.classList.add("modal-actions-role-grid");
-      actionsEl.innerHTML =
-        "<a href=\"" + cfg.educator + "?role=admin\" class=\"btn\">Admin</a>" +
-        "<a href=\"" + cfg.educator + "?role=teacher\" class=\"btn\">Teacher</a>" +
-        "<a href=\"" + cfg.educator + "?role=homeschool\" class=\"btn\">Homeschooler</a>" +
-        "<a href=\"" + cfg.student + "?role=students\" class=\"btn btn-secondary\">Individual</a>";
-      return;
-    }
-
-    if (audience === "educator") {
-      actionsEl.classList.add("single-option");
-      actionsEl.innerHTML = "<a href=\"" + cfg.educator + "\" class=\"btn\">Educator</a>";
-      return;
-    }
-
-    if (audience === "student") {
-      actionsEl.classList.add("single-option");
-      actionsEl.innerHTML = "<a href=\"" + cfg.student + "\" class=\"btn btn-secondary\">Individual</a>";
-      return;
-    }
-
-    actionsEl.innerHTML =
-      "<a href=\"" + cfg.educator + "\" class=\"btn\">Educator</a>" +
-      "<a href=\"" + cfg.student + "\" class=\"btn btn-secondary\">Individual</a>";
-  }
-
   function openModal(mode) {
     var cfg = mode === "signup" ? targets.signup : targets.login;
     if (titleEl) titleEl.textContent = cfg.title;
-    if (descriptionEl) {
-      descriptionEl.textContent = document.body.classList.contains("homepage")
-        ? "Are you an admin, teacher, homeschooler, or individual?"
-        : cfg.description;
+    if (descriptionEl) descriptionEl.textContent = cfg.description;
+    if (actionsEl) {
+      actionsEl.classList.remove("single-option");
+      actionsEl.classList.remove("modal-actions-role-grid");
+      actionsEl.innerHTML =
+        "<a href=\"" + cfg.educator + "\" class=\"btn\">Educator</a>" +
+        "<a href=\"" + cfg.individual + "\" class=\"btn btn-secondary\">Individual</a>";
     }
-    renderAuthActions(mode);
 
     modal.classList.add("is-visible");
     modal.setAttribute("aria-hidden", "false");
@@ -271,8 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.setAttribute("aria-hidden", "true");
   }
 
-  var triggers = document.querySelectorAll("[data-auth-trigger]");
-  triggers.forEach(function (el) {
+  document.querySelectorAll("[data-auth-trigger]").forEach(function (el) {
     el.addEventListener("click", function (event) {
       event.preventDefault();
       openModal(el.getAttribute("data-auth-trigger") || "login");
@@ -294,41 +262,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (authRouteMatch) {
     openModal(authRouteMatch[1]);
   }
-
-  ensureFooterLanguageSelector();
-  initTeacherLearningTabs();
-  initTeacherFaq();
-});
-
-function ensureFooterLanguageSelector() {
-  var footerInners = document.querySelectorAll("footer .footer-inner");
-  if (!footerInners.length) return;
-
-  footerInners.forEach(function (footerInner) {
-    if (footerInner.querySelector(".footer-language")) return;
-
-    var wrapper = document.createElement("div");
-    wrapper.className = "footer-language";
-
-    var label = document.createElement("label");
-    label.className = "footer-language-label";
-    label.setAttribute("for", "footer-language-select");
-    label.textContent = "Language";
-
-    var select = document.createElement("select");
-    select.id = "footer-language-select";
-    select.className = "footer-language-select";
-    select.setAttribute("aria-label", "Language selector");
-    select.innerHTML =
-      "<option value=\"en\" selected>English</option>" +
-      "<option value=\"es\">Spanish</option>" +
-      "<option value=\"fr\">French</option>" +
-      "<option value=\"de\">German</option>";
-
-    wrapper.appendChild(label);
-    wrapper.appendChild(select);
-    footerInner.appendChild(wrapper);
-  });
 }
 
 function createAuthModal() {
@@ -345,210 +278,42 @@ function createAuthModal() {
       "<div class=\"modal-body\">" +
         "<p class=\"modal-description\">Choose whether you're logging in as an educator or an individual.</p>" +
         "<div class=\"modal-actions\">" +
-          "<a href=\"login/educator/\" class=\"btn\" data-role=\"educator\">Educator</a>" +
-          "<a href=\"login/student/\" class=\"btn btn-secondary\" data-role=\"student\">Individual</a>" +
+          "<a href=\"login/educator/\" class=\"btn\">Educator</a>" +
+          "<a href=\"login/student/\" class=\"btn btn-secondary\">Individual</a>" +
         "</div>" +
       "</div>" +
     "</div>";
   return wrapper;
 }
 
-function hydratePersonaPage(personaKey) {
-  var personaMap = {
-    admin: {
-      label: "admins",
-      audience: "district and school teams",
-      ctaHref: "signup/educator/",
-      ctaLabel: "Create admin account",
-      heroImage: "assets/ai-hero-admin.svg"
-    },
-    teacher: {
-      label: "teachers",
-      audience: "classroom teachers",
-      ctaHref: "signup/educator/",
-      ctaLabel: "Create teacher account",
-      heroImage: "assets/ai-hero-teacher.svg"
-    },
-    homeschool: {
-      label: "homeschool families",
-      audience: "parents and learning pods",
-      ctaHref: "signup/educator/",
-      ctaLabel: "Create homeschool account",
-      heroImage: "assets/ai-hero-homeschool.svg"
-    },
-    students: {
-      label: "individuals",
-      audience: "independent learners",
-      ctaHref: "signup/student/",
-      ctaLabel: "Create individual account",
-      heroImage: "assets/ai-hero-student.svg"
-    }
-  };
+function ensureFooterLanguageSelector() {
+  var footerInners = document.querySelectorAll("footer .footer-inner");
+  if (!footerInners.length) return;
 
-  var persona = personaMap[personaKey];
-  var main = document.querySelector("main.main");
-  if (!persona || !main || main.querySelector(".page-section")) return;
+  footerInners.forEach(function (footerInner, index) {
+    if (footerInner.querySelector(".footer-language")) return;
 
-  if (!main.querySelector(".hero")) {
-    var h1 = main.querySelector("h1");
-    var firstParagraph = main.querySelector("p");
-    if (h1) {
-      var title = h1.textContent;
-      var lead = firstParagraph ? firstParagraph.textContent : "";
+    var wrapper = document.createElement("div");
+    wrapper.className = "footer-language";
 
-      main.innerHTML =
-        "<section class=\"hero\">" +
-          "<div>" +
-            "<div class=\"hero-pill\">For " + persona.label + "</div>" +
-            "<h1>" + title + "</h1>" +
-            "<p class=\"hero-lead\">" + lead + "</p>" +
-            "<ul class=\"hero-list\">" +
-              "<li>Start with clear lessons and goals.</li>" +
-              "<li>Track progress and engagement in one place.</li>" +
-              "<li>Scale the same workflow across groups.</li>" +
-            "</ul>" +
-            "<a href=\"" + persona.ctaHref + "\" class=\"btn btn-large hero-cta\">Sign Up</a>" +
-          "</div>" +
-          "<div class=\"hero-media\">" +
-            "<img src=\"" + persona.heroImage + "\" alt=\"" + title + "\" class=\"hero-image\" />" +
-          "</div>" +
-        "</section>";
-    }
-  }
+    var id = "footer-language-select-" + index;
+    var label = document.createElement("label");
+    label.className = "footer-language-label";
+    label.setAttribute("for", id);
+    label.textContent = "Language";
 
-  return;
-}
+    var select = document.createElement("select");
+    select.id = id;
+    select.className = "footer-language-select";
+    select.setAttribute("aria-label", "Language selector");
+    select.innerHTML =
+      "<option value=\"en\" selected>English</option>" +
+      "<option value=\"es\">Spanish</option>" +
+      "<option value=\"fr\">French</option>" +
+      "<option value=\"de\">German</option>";
 
-function hydrateSharedTopicPage(topicKey) {
-  var topicMap = {
-    curriculum: {
-      label: "Curriculum",
-      title: "One teaching sequence for every persona",
-      copy: "Use the same lesson flow across admin, teacher, and homeschool contexts."
-    },
-    standards: {
-      label: "Standards",
-      title: "Shared standards alignment and reporting",
-      copy: "Track measurable outcomes with one standards workflow for all teams."
-    },
-    accessibility: {
-      label: "Accessibility",
-      title: "Inclusive practice model for all learners",
-      copy: "Apply one accessibility approach across school, classroom, and home settings."
-    },
-    plus: {
-      label: "PLUS Edition",
-      title: "Advanced controls with one shared upgrade path",
-      copy: "Enable premium tools once and apply them across every persona workflow."
-    }
-  };
-
-  var topic = topicMap[topicKey];
-  var main = document.querySelector("main.main");
-  if (!topic || !main) return;
-
-  main.innerHTML =
-    "<section class=\"shared-topic-hero\">" +
-      "<p class=\"section-label\">" + topic.label + "</p>" +
-      "<h1>" + topic.title + "</h1>" +
-      "<p class=\"shared-topic-lead\">" + topic.copy + "</p>" +
-    "</section>";
-}
-
-function renderSections(main, config) {
-  var featureCards = config.pillars
-    .map(function (card) {
-      return "<article class=\"feature-card\"><h3>" + card.title + "</h3><p>" + card.body + "</p></article>";
-    })
-    .join("");
-
-  var setupItems = config.setup.map(function (item) { return "<li>" + item + "</li>"; }).join("");
-  var outcomeItems = config.outcomes.map(function (item) { return "<li>" + item + "</li>"; }).join("");
-
-  main.insertAdjacentHTML(
-    "beforeend",
-    "<section class=\"page-section\">" +
-      "<p class=\"section-label\">" + config.sectionLabel + "</p>" +
-      "<h2>" + config.sectionTitle + "</h2>" +
-      "<p class=\"section-copy\">" + config.sectionCopy + "</p>" +
-      "<div class=\"feature-grid\">" + featureCards + "</div>" +
-    "</section>" +
-    "<section class=\"page-section split-panel\">" +
-      "<article class=\"panel\"><h3>How to set it up</h3><ul>" + setupItems + "</ul></article>" +
-      "<article class=\"panel\"><h3>What success looks like</h3><ul>" + outcomeItems + "</ul></article>" +
-    "</section>" +
-    "<section class=\"cta-banner\">" +
-      "<h2>Ready to put this page into action?</h2>" +
-      "<p>Use the same navigation and structure throughout your site.</p>" +
-      "<a href=\"" + config.ctaHref + "\" class=\"btn\">" + config.ctaLabel + "</a>" +
-    "</section>"
-  );
-}
-
-function initTeacherLearningTabs() {
-  var tabRoots = document.querySelectorAll("[data-learning-tabs]");
-  if (!tabRoots.length) return;
-
-  tabRoots.forEach(function (tabRoot) {
-    var triggers = tabRoot.querySelectorAll("[data-tab-trigger]");
-    var panels = tabRoot.querySelectorAll("[data-tab-panel]");
-    if (!triggers.length || !panels.length) return;
-
-    function setActiveTab(targetKey) {
-      triggers.forEach(function (trigger) {
-        var isActive = trigger.getAttribute("data-tab-target") === targetKey;
-        trigger.classList.toggle("is-active", isActive);
-        trigger.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-
-      panels.forEach(function (panel) {
-        var isActive = panel.getAttribute("data-tab-panel") === targetKey;
-        panel.classList.toggle("is-active", isActive);
-        panel.hidden = !isActive;
-      });
-    }
-
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener("click", function () {
-        setActiveTab(trigger.getAttribute("data-tab-target"));
-      });
-    });
-
-    var defaultActive = tabRoot.querySelector("[data-tab-trigger].is-active");
-    var initialKey = defaultActive ? defaultActive.getAttribute("data-tab-target") : triggers[0].getAttribute("data-tab-target");
-    setActiveTab(initialKey);
-  });
-}
-
-function initTeacherFaq() {
-  var faqRoots = document.querySelectorAll("[data-faq]");
-  if (!faqRoots.length) return;
-
-  faqRoots.forEach(function (faqRoot) {
-    var triggers = faqRoot.querySelectorAll("[data-faq-trigger]");
-    var panels = faqRoot.querySelectorAll("[data-faq-panel]");
-    if (!triggers.length || !panels.length) return;
-
-    function setOpen(targetKey) {
-      triggers.forEach(function (trigger) {
-        var isOpen = trigger.getAttribute("data-faq-target") === targetKey;
-        trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-
-      panels.forEach(function (panel) {
-        var isOpen = panel.getAttribute("data-faq-panel") === targetKey;
-        panel.hidden = !isOpen;
-      });
-    }
-
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener("click", function () {
-        var key = trigger.getAttribute("data-faq-target");
-        var isOpen = trigger.getAttribute("aria-expanded") === "true";
-        setOpen(isOpen ? null : key);
-      });
-    });
-
-    setOpen(null);
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    footerInner.appendChild(wrapper);
   });
 }
